@@ -1,0 +1,75 @@
+.left-bar {
+    flex: 1.5;
+    position: sticky;
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100vw - 90vw);
+    top: 70px;
+    height: calc(100vh - 70px);
+    overflow: scroll;
+    background-color: blue;
+    color: #000;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .left-bar {
+      display: none;
+    }
+  }
+  
+  .left-bar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .left-bar-container {
+    padding: 20px;
+  }
+  
+  .left-bar-container hr {
+    margin: 20px 0px;
+    border: none;
+    height: 0.5px;
+    background-color: #ccc;
+  }
+  
+  .left-bar-container .left-bar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .left-bar-container .left-bar-menu span {
+    font-size: 12px;
+  }
+  
+  .left-bar-container .left-bar-menu .left-bar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .left-bar-container .left-bar-menu .left-bar-user img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .left-bar-container .left-bar-menu .left-bar-user span {
+    font-size: 14px;
+  }
+  
+  .left-bar-container .left-bar-menu .left-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .left-bar-container .left-bar-menu .left-bar-item img {
+    width: 30px;
+  }
+  
+  .left-bar-container .left-bar-menu .left-bar-item span {
+    font-size: 14px;
+  }
+  

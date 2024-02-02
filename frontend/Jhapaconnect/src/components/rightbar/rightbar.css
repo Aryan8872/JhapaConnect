@@ -1,0 +1,101 @@
+.right-bar {
+    flex: 3;
+    position: sticky;
+    top: 70px;
+    height: calc(100vh - 70px);
+    overflow: scroll;
+    background-color: #f0f0ff;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .right-bar {
+      display: none;
+    }
+  }
+  
+  @media only screen and (max-width: 1023px) {
+    .right-bar {
+      display: none;
+    }
+  }
+  
+  .right-bar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .right-bar .container {
+    padding: 20px;
+  }
+  
+  .right-bar .container .item {
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f0f0ff;
+  }
+  
+  .right-bar .container .item span {
+    color: gray;
+  }
+  
+  .right-bar .container .item .user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px;
+  }
+  
+  .right-bar .container .item .user .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+  }
+  
+  .right-bar .container .item .user .userInfo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .right-bar .container .item .user .userInfo .online {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: limegreen;
+    position: absolute;
+    top: 0;
+    left: 30px;
+  }
+  
+  .right-bar .container .item .user .userInfo p {
+    color: #ccc;
+  }
+  
+  .right-bar .container .item .user .userInfo span {
+    font-weight: 500;
+    color: #000;
+  }
+  
+  .right-bar .container .item .user .buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .right-bar .container .item .user .buttons button {
+    border: none;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .right-bar .container .item .user .buttons button:first-child {
+    background-color: #5271ff;
+  }
+  
+  .right-bar .container .item .user .buttons button:last-child {
+    background-color: #f0544f;
+  }
+  

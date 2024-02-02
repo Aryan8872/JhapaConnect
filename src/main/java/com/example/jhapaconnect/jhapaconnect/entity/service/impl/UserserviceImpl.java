@@ -2,14 +2,15 @@ package com.example.jhapaconnect.jhapaconnect.entity.service.impl;
 import com.example.jhapaconnect.jhapaconnect.entity.entity.UserEntity;
 import  com.example.jhapaconnect.jhapaconnect.entity.repository.UserRepository;
 import com.example.jhapaconnect.jhapaconnect.entity.dto.UserDTO;
+import com.example.jhapaconnect.jhapaconnect.entity.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +18,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 
-public class UserserviceImpl implements UserDetailsService {
+public class UserserviceImpl implements UserDetailsService , UserService {
     private final UserRepository repository;
     UserEntity user = new UserEntity();
 
@@ -44,14 +45,18 @@ public class UserserviceImpl implements UserDetailsService {
 
     }
 
-    public boolean deleteUser(Long userid) {
-        return false;
+
+
+    public ResponseEntity<String> deleteUser(Integer userid) {
+        repository.deleteById(userid);
+        return ResponseEntity.ok("deleted sucessfully");
     }
 
 
 
-    public List<UserEntity> getAlluser() {
-        return null;
+    public ResponseEntity<List<UserEntity>> getAlluser() {
+
+        return ResponseEntity.ok(repository.findAll());
     }
 
     @GetMapping("userData/{id}")

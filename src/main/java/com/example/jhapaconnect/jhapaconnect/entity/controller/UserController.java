@@ -3,6 +3,7 @@ package com.example.jhapaconnect.jhapaconnect.entity.controller;
 
 import com.example.jhapaconnect.jhapaconnect.entity.dto.UserDTO;
 import com.example.jhapaconnect.jhapaconnect.entity.entity.UserEntity;
+import com.example.jhapaconnect.jhapaconnect.entity.repository.UserRepository;
 import com.example.jhapaconnect.jhapaconnect.entity.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 
 public class UserController {
+    private final UserService userService;
+
+    @DeleteMapping("/delete/{userid}")
+    public ResponseEntity<String> deleteUser(@PathVariable("userid") Integer userid) {
+        userService.deleteUser(userid);
+        return ResponseEntity.ok("deleted sucessfully");
 
 
+    }
 }
+
+

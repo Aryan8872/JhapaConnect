@@ -1,0 +1,80 @@
+.post-sharing {
+    -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    border-radius: 20px;
+    background-color: themed("bg");
+    color: themed("textColor");
+    margin-bottom: 20px;
+  }
+  
+  .post-sharing .post-sharing-container {
+    padding: 20px;
+  }
+  
+  .post-sharing .post-sharing-container .post-sharing-top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .post-sharing .post-sharing-container .post-sharing-top img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .post-sharing .post-sharing-container .post-sharing-top input {
+    border: none;
+    outline: none;
+    padding: 20px 10px;
+    background-color: transparent;
+    width: 60%;
+    color: themed("textColor");
+  }
+  
+  .post-sharing .post-sharing-container hr {
+    margin: 20px 0px;
+    border: none;
+    height: 0.5px;
+    background-color: themed("border");
+  }
+  
+  .post-sharing .post-sharing-container .post-sharing-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .post-sharing .post-sharing-container .post-sharing-bottom .post-sharing-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .post-sharing .post-sharing-container .post-sharing-bottom .post-sharing-left .post-sharing-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  
+  .post-sharing .post-sharing-container .post-sharing-bottom .post-sharing-left .post-sharing-item img {
+    height: 20px;
+  }
+  
+  .post-sharing .post-sharing-container .post-sharing-bottom .post-sharing-left .post-sharing-item span {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .post-sharing .post-sharing-container .post-sharing-bottom .post-sharing-right button {
+    border: none;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+    background-color: #5271ff;
+    border-radius: 3px;
+  }
+  

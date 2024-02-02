@@ -2,10 +2,10 @@
 import './index.css'
 import {Routes,Route} from  'react-router-dom';
 import SigninForm from "../auth/forms/SigninForm.tsx";
-import {AllUsers, CreatePost, Explore, Home, PostDetails, Profile, Saved, UpdatePost, UpdateProfile} from "../root/pages/index.ts";    //the index.ts file makes the export more easier as wen can import other pages within it
+import {AllUsers, CreatePost, Explore, Home, PostDetails, Profile, Saved, UpdatePost, UpdateProfile,Login,Register} from "../root/pages/index.ts";    //the index.ts file makes the export more easier as wen can import other pages within it
 import SignupForm from "../auth/forms/SignupForm.tsx";
 import AuthLayout from "../auth/AuthLayout.tsx";
-import RootLayout from "../root/RootLayout.tsx";
+import RootLayout from "./components/root/RootLayout.tsx";
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 function App() {
@@ -14,15 +14,15 @@ function App() {
 
     return (
         <>
-            <main className={"flex h-screen"}>
+            <main className="main">
             <QueryClientProvider client={queryclient}>
                 <Routes>
 
                     {/* public routes. they are login signup*/}
                     <Route element={<AuthLayout/>}>
                         {/* within authlayout we are placing these 2 pages wrapping them. the pages will change within the same  route*/}
-                        <Route path="/sign-in" element={<SigninForm/>}/>
-                        <Route path="/sign-up" element={<SignupForm/>}/>
+                        <Route path="/Login" element={<Login/>}/>
+                        <Route path="/register" element={<Register/>}/>
 
                     </Route>
 
