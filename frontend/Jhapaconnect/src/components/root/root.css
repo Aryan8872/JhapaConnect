@@ -1,6 +1,19 @@
-.parent{    
-    background-color: brown;
-    height: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+
+.outlet{
     display: flex;
-    width: 100%;
+    flex-flow: column wrap;
+    flex:6;
+    background-color: #f0f2f5;
+
 }
+
+@media (max-width:768px) {
+    .outlet{
+    }
+    
+}
+
+
+    

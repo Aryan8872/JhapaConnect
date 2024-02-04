@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import java.awt.*;
 import java.lang.reflect.Array;
 import java.sql.Blob;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -30,14 +31,22 @@ public class Post {
     @Column(name = "tags", nullable = true)
     private List<String> tags;
 
-    @Column(name= "caption" , nullable = false)
-    private String caption;
-
-    @Column(name="description" , nullable= true)
+    @Column(name="description" , nullable= false ,length = 1000)
     private String description;
 
-    @Column(name = "location" , nullable = true)
+    @Column(name = "location" , nullable =false)
     private  String location;
+
+    private String imageName;
+    private Date addedDate;
+
+
+    @ManyToOne
+    private Category category;
+
+    @ManyToOne
+    private UserEntity user;
+
 
 
 

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 .left-bar {
     flex: 1.5;
     position: sticky;
@@ -7,8 +9,9 @@
     top: 70px;
     height: calc(100vh - 70px);
     overflow: scroll;
-    background-color: blue;
+    background-color: #f0f2f5;
     color: #000;
+    font-family: Poppins,sans-serif;
   }
   
   @media only screen and (max-width: 767px) {
@@ -35,7 +38,7 @@
   .left-bar-container .left-bar-menu {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 44px;
   }
   
   .left-bar-container .left-bar-menu span {
@@ -62,11 +65,13 @@
   .left-bar-container .left-bar-menu .left-bar-item {
     display: flex;
     align-items: center;
+    height: 30px;
     gap: 10px;
   }
   
   .left-bar-container .left-bar-menu .left-bar-item img {
     width: 30px;
+    height: 30px;
   }
   
   .left-bar-container .left-bar-menu .left-bar-item span {

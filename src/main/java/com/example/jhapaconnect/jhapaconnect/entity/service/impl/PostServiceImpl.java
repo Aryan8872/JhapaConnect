@@ -1,10 +1,16 @@
 package com.example.jhapaconnect.jhapaconnect.entity.service.impl;
 
+import com.example.jhapaconnect.jhapaconnect.entity.dto.CategoryDTO;
 import com.example.jhapaconnect.jhapaconnect.entity.dto.PostDTO;
+import com.example.jhapaconnect.jhapaconnect.entity.entity.Category;
 import com.example.jhapaconnect.jhapaconnect.entity.entity.Post;
+import com.example.jhapaconnect.jhapaconnect.entity.entity.UserEntity;
+import com.example.jhapaconnect.jhapaconnect.entity.repository.CategoryRepository;
 import com.example.jhapaconnect.jhapaconnect.entity.repository.PostRepository;
+import com.example.jhapaconnect.jhapaconnect.entity.repository.UserRepository;
 import com.example.jhapaconnect.jhapaconnect.entity.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,40 +18,73 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
-    private final PostRepository repository;
-    Post post = new Post();
+    private final PostRepository postrepo;
+    private final ModelMapper mapper;
+    private final UserRepository userrepo;
+    private final CategoryRepository catrepo;
+
 
     @Override
-    public void createPost(PostDTO dto) {
-        if(dto.getId()!=null){
-            post= (repository.findById(dto.getId()).orElseThrow(()->new NullPointerException()));
-        }
+    public PostDTO createPost(PostDTO postdto, Integer userId, Integer catId) {
+        UserEntity user = userrepo.findById(userId).orElseThrow(()-> new NullPointerException("user notfound" + userId));
+        Category category = catrepo.findById(catId).orElseThrow(()->new NullPointerException("category not found" + catId));
+        Post post = mapper.map(postdto,Post.class);
+        post.setImageName("default.png");
+        post.setAddedDate(new Date());
+        post.setUser(user);
+        post.setCategory(category);
 
-        post.setId(dto.getId());
-        post.setTags(dto.getTags());
-        post.setCaption(dto.getCaption());
-        post.setLocation(dto.getLocation());
-        post.setDescription(dto.getDescription());
-        repository.save(post);
-        System.out.println("post added");
+        Post newPost = postrepo.save(post);
+        return mapper.map(newPost,PostDTO.class );
 
 
 
     }
 
     @Override
-    public List<Post> getAllPost() {
-        return repository.findAll();
+    public List<PostDTO> getAllPost() {
+        List <Post> post  = postrepo.findAll();
+        List<PostDTO> postdto =post.stream().map(
+                (pos)->mapper.map(pos,PostDTO.class)).collect(Collectors.toList());
+
+        return  postdto;
+
+    }
+
+    @Override
+    public PostDTO getPostbyId(Integer postid) {
+        return null;
+    }
+
+    @Override
+    public List<Post> getPostbyCategory(Integer catID) {
+        return null;
+    }
+
+    @Override
+    public List<Post> getPostbyUser(UserEntity user) {
+        return null;
+    }
+
+    @Override
+    public List<Post> searchPost(String keyword) {
+        return null;
+    }
+
+    @Override
+    public Post updatePost(PostDTO postdto, Integer postId) {
+        return null;
     }
 
     @Override
     public void deletePost(Integer id) {
-        repository.deleteById(id);
 
     }
 

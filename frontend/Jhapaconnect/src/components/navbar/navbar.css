@@ -1,15 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+
 .navbar-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    height: 50px;
+    height: 69px;
     border-bottom: 1px solid #ccc;
     position: sticky;
     top: 0;
     background-color: #f8f8ff;
     color: #000;
     z-index: 999;
+    font-family: Poppins,sans-serif;
+    color: black;
+    
   }
   
   .navbar-container .navbar-left {

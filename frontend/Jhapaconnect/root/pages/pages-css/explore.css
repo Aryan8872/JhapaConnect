@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+.items-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+}
+.item{
+    display: flex;
+    flex-flow: column wrap;
+    width: 255px;
+    height: 342px;
+
+}
+.image-container{
+    width: 100%;
+    height: 80%;
+}
+.image_container img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.product_info{
+    display: flex;
+    flex-flow: column wrap;
+    padding-left: 1.2vmax;
+}

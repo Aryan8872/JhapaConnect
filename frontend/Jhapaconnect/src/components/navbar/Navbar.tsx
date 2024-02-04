@@ -6,12 +6,11 @@ const Navbar = () => {
   return (
     <div className="navbar-container">
     <div className="navbar-left">
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <span>lamasocial</span>
+      <Link to="/" style={{ textDecoration: "none", color:"black" ,display:"flex", gap:"1.2vmax" }}>
+        <img src="/assets/icons/connect.png" alt = "people connect" height={30} />
+        <span>People Connect</span>
       </Link>
-      <img src='/assets/icons/home.png' height={30} width={30}/>
-     
-      <img src='/assets/icons/market.png' height={30} width={30} />
+
       <div className="navbar-search">
         <input type="text" placeholder="Search..." />
       </div>

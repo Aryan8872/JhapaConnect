@@ -1,4 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 .home{
     padding: 20px 70px;
-    background-color: #f6f3f3;
+    background-color: #f0f2f5;
+    font-family: Poppins,sans-serif;
+    font-weight: 500;
+    justify-content: center;
+
 }

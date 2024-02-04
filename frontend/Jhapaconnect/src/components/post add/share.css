@@ -3,8 +3,6 @@
     -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
     box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
     border-radius: 20px;
-    background-color: themed("bg");
-    color: themed("textColor");
     margin-bottom: 20px;
   }
   
@@ -31,14 +29,12 @@
     padding: 20px 10px;
     background-color: transparent;
     width: 60%;
-    color: themed("textColor");
   }
   
   .post-sharing .post-sharing-container hr {
     margin: 20px 0px;
     border: none;
     height: 0.5px;
-    background-color: themed("border");
   }
   
   .post-sharing .post-sharing-container .post-sharing-bottom {
@@ -77,4 +73,22 @@
     background-color: #5271ff;
     border-radius: 3px;
   }
+
+  .tags_input{
+    height: 35px;
+    width: 110px;
+    background-color: inherit;
+    border: none;
+  }
+
+  .location_input{
+    height: 35px;
+    width: 110px;
+    background-color: inherit;
+    border: none;
+  }
+
+
+
+
   

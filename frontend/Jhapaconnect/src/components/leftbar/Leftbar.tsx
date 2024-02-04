@@ -1,54 +1,46 @@
 import React from 'react'
 import "./leftbar.css"
+import { sidebarLinks } from '@/constants'
+import { Link } from 'react-router-dom'
 
 const Leftbar = () => {
-  return (
-    <div className="left-bar">
-  <div className="left-bar-container">
-    <div className="left-bar-menu">
-      <div className="left-bar-user">
-        <img
-          src=""
-          alt="user image"
-        />
-        <span>Aryan</span>
-      </div>
-      <div className="left-bar-item">
-        <img src="" alt="friends icon" />
-        <span>Friends</span>
-      </div>
-      <div className="left-bar-item">
-        <img src="" alt="groupsicon" />
-        <span>Groups</span>
-      </div>
-      <div className="left-bar-item">
-        <img src="" alt="marketicon" />
-        <span>Marketplace</span>
-      </div>
-      <div className="left-bar-item">
-        <img src="" alt="watchicon" />
-        <span>Watch</span>
-      </div>
-      <div className="left-bar-item">
-        <img src="" alt="memoryicon" />
-        <span>Memories</span>
-      </div>
-    </div>
-    <hr />
-    <div className="left-bar-menu">
-      <span>Your shortcuts</span>
-      <div className="left-bar-item">
-        <img src="" alt="events icon" />
-        <span>Events</span>
-      </div>
+    return (
+        <div className="left-bar">
+            <div className="left-bar-container">
+                <div className="left-bar-menu">
+                    <div className="left-bar-user">
+                        <img
+                            src=""
+                            alt="user image"
+                        />
+                        <span>Aryan</span>
+                    </div>
+                    {sidebarLinks.map((link, key) => (
+                        <Link to={link.route} key={key} style={{ textDecoration: "none", color: "black" }}>
+                            <div key={key} className='left-bar-item'>
+                                <img src={link.imgURL}></img>
+                                <span>{link.label}</span>
+                            </div>
+                        </Link>
 
-    </div>
-    <hr />
+                    ))}
 
-  </div>
-</div>
+                </div>
+                <hr />
+                <div className="left-bar-menu">
+                    <span>Your shortcuts</span>
+                    <div className="left-bar-item">
+                        <img src="/assets/icons/darktheme.png" alt="events icon" />
+                        <span>Dark mode</span>
+                    </div>
 
-  )
+                </div>
+                <hr />
+
+            </div>
+        </div>
+
+    )
 }
 
 export default Leftbar

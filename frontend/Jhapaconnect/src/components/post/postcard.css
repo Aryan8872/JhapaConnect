@@ -1,0 +1,104 @@
+.post-card{
+    padding: 1.25rem; 
+    max-width: 64rem;
+    height:auto;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
+}
+
+@media (min-width: 768px) {
+    .post-card {
+        padding: 1.75rem; 
+    }
+}
+.posts{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1.2vmin;
+    width: 500px;
+   
+
+}
+
+.post_head{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.post-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-head{
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.user_pic{
+    border-radius: 50%;
+
+}
+
+.post-image{
+    border: 0.01rem solid #333; 
+    border-radius: 0.5rem;
+    height:468px; 
+    width:468px;
+}
+.post_footer{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1.2vmin;
+}
+.post-image img{
+    width: 100%;
+    height: 100%;
+}
+
+.post_interaction_btn{
+    height: 40px;
+    width: 40px;
+    border: none ;
+    padding: 8px;
+
+}
+.post_interaction_btn img{
+    height: 25px;
+    width: 25px;
+}
+.cmt_section{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    gap: 1.2vmin;
+ 
+
+}
+.cmt_section button{
+    display: flex;
+   
+    border: none;
+    color: #737373;
+  
+}
+.cmt_section form{
+    display: flex;
+    gap: 1.3vmax;
+    width: 100%; 
+    flex-flow: column wrap;
+    gap: 1vmin;
+}
+.cmt_section input{
+    text-decoration:"none" ;
+    background-color:inherit; 
+    border:none;
+    height: 30px;
+    width: 70%;
+    color:"#737373";
+
+}

@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -39,6 +40,9 @@ public class UserEntity implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Roles role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL , fetch = FetchType.LAZY)   //mapped by user colum of post
+    private List<Post>  posts = new ArrayList<>();
 
 //    @ManyToMany(fetch = FetchType.EAGER)
 //    @JoinTable(name = "users_roles",

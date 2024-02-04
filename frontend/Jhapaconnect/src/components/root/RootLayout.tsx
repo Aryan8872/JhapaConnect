@@ -6,6 +6,7 @@ import Topbax from "@/components/shared/Topbar"
 import { Outlet } from "react-router-dom"
 import Leftbar from "@/components/leftbar/Leftbar"
 import Rightbar from "../rightbar/Rightbar"
+import "./root.css"
 
 
 const RootLayout = () => {
@@ -14,22 +15,18 @@ const RootLayout = () => {
             <div className="parent" style={{ width: "100%" }}>
                 <Navbar />
 
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex"}}>
                     <Leftbar/>
-                    <div style={{ flex: 6 }}>
+                    <div className="outlet">
                       <Outlet/>
                     </div>
                     <Rightbar/>
-            </div>
+
+                </div>
 
 
-            {/* <LeftSidebar/> */}
 
-            {/* <section className="pages-parent w-full "> */}
 
-            {/* <Outlet/> */}
-
-            {/* </section> */}
 
             {/* <Bottombar/> */}
 

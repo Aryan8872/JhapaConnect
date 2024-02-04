@@ -11,15 +11,15 @@ const PostForm = () => {
 
     type PostData = {
       tags:string[],
-      caption:string,
       description:string,
       location:string | null,
+      category:String,
     }
 
     const schema : ZodType<PostData>=z.object({
       tags: z.string().transform(value => value.split(',').map(tag => tag.trim())),       
       caption:z.string().min(1).max(150),
-      description:z.string(),
+      category:z.string(),
       location:z.string().nullable(),
 
 
