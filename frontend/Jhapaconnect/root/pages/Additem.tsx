@@ -1,9 +1,65 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./pages-css/add-item.css"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import Itempreview from '@/components/itempreview/Itempreview'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { ZodType, z } from 'zod'
+import { useMutation } from 'react-query'
+import axios from 'axios'
 
 const Additem = () => {
+
+  const [itemId,setItemid] =useState(null);
+  const [formsubmit,setFormsubmit] = useState(false);
+  const navigate = useNavigate();
+
+  
+  type itemData = {
+    title:string,
+    price:string,
+    description:string,
+    location:string,
+    
+    
+  }
+  const schema:ZodType<itemData> =z.object({
+    title:z.string(),
+    price:z.string(),
+    description:z.string(),
+    location:z.string(),
+
+  }) 
+
+  const {register , handleSubmit ,formState} = useForm<itemData>({resolver:zodResolver(schema)})
+
+
+  const saveItem = useMutation({
+    mutationKey:"SAVEITEM",
+    mutationFn: async (data:itemData) =>{
+      const item = await axios.post("http://localhost:8080/api/v1/auth/user/1/category/1/item",data).then(
+        response =>{
+          setItemid(response.data.id)
+          setFormsubmit(true)
+          console.log(response)
+
+        }
+      ).catch(err => console.log(err))
+
+    }
+  })
+
+  useEffect(() => {
+    if (formsubmit  && itemId) {
+      navigate(`/item/${itemId}/image/upload`);
+    }
+  }, [formsubmit, itemId, navigate]);
+
+  const handlePost =(data:itemData)=>{
+    saveItem.mutate(data)
+    console.log(data)
+  }
+
   return (
     <>
     <div className='Addditem'>
@@ -51,10 +107,10 @@ const Additem = () => {
 
 
           </div>
-          <form className='add_item_form'>
+          <form className='add_item_form' encType='multipart/form-data' onSubmit={handleSubmit(handlePost)}>
 
             <div className='image_section'>
-              <input type='file'/>
+              <input type='file'  {...register("image")}  name='image'/>
 
               <div className='image_label'>
                 <div style={{width:"30px", height:"30px"}}>
@@ -71,12 +127,16 @@ const Additem = () => {
               <span>Required Fields</span>
 
               <div className='fields'>
-                <input placeholder='Title'/>
-                <input placeholder='Price'/>
-                <input placeholder='Category'/>
-                <input placeholder='Location'/>
+                <input placeholder='Title' {...register("title")}/>
+                <input placeholder='Price'  {...register("price")}/>
+                <input placeholder='Description'  {...register("description")}/>
+
+                {/* <input placeholder='Category'/> */}
+                <input placeholder='Location'  {...register("location")}/>
 
               </div>
+
+              <button type='submit'>submit</button>
 
 
             </section>

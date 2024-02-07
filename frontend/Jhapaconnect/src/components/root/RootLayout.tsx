@@ -15,7 +15,7 @@ const RootLayout = () => {
             <div className="parent" style={{ width: "100%" }}>
                 <Navbar />
 
-                <div style={{ display: "flex"}}>
+                <div style={{ display: "flex",height:"100vh"}}>
                     <Leftbar/>
                     <div className="outlet">
                       <Outlet/>

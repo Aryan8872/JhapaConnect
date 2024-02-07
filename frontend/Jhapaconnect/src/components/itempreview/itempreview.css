@@ -29,19 +29,20 @@
     justify-content: center;
     height: 76%;
     width: 60%;
-    background-color: blue
 }
 
 .preview_image{
-    background-color: cadetblue;
     width: 100%;
     height: 100%;
+    border-radius: 1rem;
+    border: 1px solid black ;
 }
 
 
 .preview_image img{
     height: 100%;
     width: 100%;
+    border-radius: 1rem;
  
     object-fit: fill;
 
@@ -61,6 +62,28 @@
     gap: 1.2vmin;
     width: 35%;
     word-wrap: break-word;
+}
+.description_section{
+    font-size: 0.875rem;
+}
+.tags{
+    font-size: 0.875rem;
+
+}
+.like_section{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2vmax;
+}
+.post_interaction_btn{
+    width: 35px;
+    height: 35px;
+    background: transparent;
+}
+.post_interaction_btn img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .post_preview_form{
     display: flex;
@@ -83,6 +106,11 @@
 }
 .post_cmts{
     width: 100%;
+    display: flex;
+    /* flex-flow: column wrap; */
+    flex-wrap: wrap;
+    overflow: auto;
+    gap: 1.7vmin;
 }
 .cmt_container{
     display: flex;
@@ -105,26 +133,63 @@
     flex-flow: column wrap;
     height: auto;
     overflow: auto;
-
+    border-radius: 0.5rem;
+    background-color: #f0f2f5;
+}
+.commenter{
+    font-size: 0.975rem;
 }
 
 .comment_text {
+    font-size: 0.875rem;
     max-width: 300px;
- 
     word-wrap: break-word; /* Allow long words to break and wrap to the next line */
 }
 
 @media (max-width:768px) {
  
     .preview_image_container{
-        height: 50%;
-        width: 100%;
+        height: 30%;
+        width: 70%;
+        align-self: center;
     }
     .post_footer{
         font-size: 0.875rem;
     }
     .right_detail{
         width: 100%;
+        font-size: 0.785rem;
     }
+    .right_detail{
+        height:68%;
+    }
+    .right_lower{
+        gap: 1.8vmin;
+    }
+    .post_cmts{
+        height:40%;
+        width: 100%;
+    }
+    .right_upper_container{
+        height: auto;
+    }
+    .like_section{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2vmax;
+    }
+    .post_interaction_btn
     
+    {
+        height: 35px;
+        background:transparent;
+
+      
+        width: 35px;
+    }
+    .post_interaction_btn img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
 }

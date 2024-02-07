@@ -14,6 +14,8 @@ public interface CategoryService {
 
     public CategoryDTO getCategory(Integer categoryId);
 
+//    public CategoryDTO getCategorybyname(String name);
+
     public List<CategoryDTO> getAllCategory();
 
 

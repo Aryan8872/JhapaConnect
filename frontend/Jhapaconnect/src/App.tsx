@@ -8,6 +8,8 @@ import AuthLayout from "../auth/AuthLayout.tsx";
 import RootLayout from "./components/root/RootLayout.tsx";
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Itempreview from './components/itempreview/Itempreview.tsx';
+import Postimageuploader from './components/image uploader/Postimageuploader.tsx';
+import Itemimageuploader from './components/image uploader/ItemImage upload/Itemimageuploader.tsx';
 
 function App() {
 
@@ -39,6 +41,10 @@ function App() {
                         <Route path="/update-post" element={<UpdatePost/>}/>
                         <Route path="/market" element={<Marketplace/>}/>
                         <Route path="/profile" element={<Profile/>}/>
+                        <Route path="/post/:postId" element={<Itempreview/>}/>
+                        <Route path="/post/:postId/image/upload" element={<Postimageuploader/>}/>
+                        <Route path="/item/:itemId/image/upload" element={<Itemimageuploader/>}/>
+
                         <Route path="/update-profile" element={<UpdateProfile/>}/>
                         <Route path = "/item/:itemId/category/:catId" element={<Itempreview/>}/>
 

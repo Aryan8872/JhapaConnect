@@ -1,14 +1,18 @@
 package com.example.jhapaconnect.jhapaconnect.entity.entity;
 
 
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import jakarta.persistence.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.awt.*;
 import java.lang.reflect.Array;
 import java.sql.Blob;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Builder
@@ -38,6 +42,7 @@ public class Post {
     private  String location;
 
     private String imageName;
+
     private Date addedDate;
 
 
@@ -46,6 +51,9 @@ public class Post {
 
     @ManyToOne
     private UserEntity user;
+
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)  //post instance of comment entity
+    private Set<Comment> comments = new HashSet<>();
 
 
 

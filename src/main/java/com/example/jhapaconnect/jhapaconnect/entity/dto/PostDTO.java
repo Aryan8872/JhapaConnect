@@ -1,6 +1,7 @@
 package com.example.jhapaconnect.jhapaconnect.entity.dto;
 
 import com.example.jhapaconnect.jhapaconnect.entity.entity.Category;
+import com.example.jhapaconnect.jhapaconnect.entity.entity.Comment;
 import com.example.jhapaconnect.jhapaconnect.entity.entity.Post;
 import com.example.jhapaconnect.jhapaconnect.entity.entity.UserEntity;
 import jakarta.validation.constraints.NotNull;
@@ -8,7 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -29,6 +32,7 @@ public class PostDTO {
     private String addedDate;
     private UserDTO user;
     private CategoryDTO category;
+    private Set<CommentDTO> comments = new HashSet<>();
 
 
 }

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import {Link} from"react-router-dom"
+import {Link, useNavigate} from"react-router-dom"
 import './postcard.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import axios from 'axios'
 
 const Postcard = ({props}) => {
+    const navigate = useNavigate();
     const {addedDate, category,description,id,imageName,location,tags, user } = props; 
     // console.log(location)  
     // console.log(tags)
@@ -14,8 +16,14 @@ const Postcard = ({props}) => {
 
     const [Like, setLike] = useState(0);
     const [comment,setComment]= useState("")
+    const[image,setImage] = useState();
+    const [error, setError] = useState(null);
+
+
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(()=>{
+        getPostimage()
 
     },[] )
 
@@ -29,6 +37,34 @@ const Postcard = ({props}) => {
 
     }
     console.log(comment)
+
+    const getPostimage= async ()=>{
+        try {
+            const response = await axios.get(`http://localhost:8080/api/v1/auth/post/image/${imageName}`, {
+                responseType: 'blob' 
+            });
+
+            // Create a blob URL from the image data
+            const imageUrl = URL.createObjectURL(response.data);
+
+            // Set the image URL to state
+            setImage(imageUrl);
+            setIsLoading(false);
+        } catch (error) {
+            // Handle errors
+            setError(error.message);
+            setIsLoading(false);
+        }
+    }
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
    
 
@@ -58,7 +94,7 @@ const Postcard = ({props}) => {
                 </Link>
             </div>
             <div className='post-image'>
-                <img src="assets/icons/market.png"/>
+                <img src= {image} onClick={()=>(navigate(`/post/${id}`))}/>
             </div>
 
             <div className='post_footer'>

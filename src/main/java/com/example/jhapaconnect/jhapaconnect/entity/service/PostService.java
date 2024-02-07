@@ -11,15 +11,15 @@ import java.util.List;
 
 public interface PostService{
     PostDTO createPost(PostDTO postdto,Integer userId, Integer catId );
-    List <PostDTO> getAllPost();
+    List <PostDTO> getAllPost(String sortBy ,String sortDirect);
     PostDTO getPostbyId(Integer postid);
 
-    List<Post> getPostbyCategory(Integer catID);
-    List <Post> getPostbyUser(UserEntity user);
+    List<PostDTO> getPostbyCategory(Integer catID);
+    List <PostDTO> getPostbyUser(Integer userId);
 
-    List <Post> searchPost(String keyword);
+    List <PostDTO> searchPost(String keyword);
 
-    Post updatePost(PostDTO postdto , Integer postId);
+    PostDTO updatePost(PostDTO postdto , Integer postId);
     void deletePost(Integer postid);
 
 

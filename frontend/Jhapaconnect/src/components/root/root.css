@@ -6,6 +6,7 @@
     flex-flow: column wrap;
     flex:6;
     background-color: #f0f2f5;
+    overflow:auto;
 
 }
 
