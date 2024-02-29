@@ -160,7 +160,7 @@ const handleFileChange = (event) => {
 
   return (
     <div className='overlay' >
-      <div className='modelContainer'  >
+      <div className='eventModelContainer'  >
         <div className='upper'>
           <div className='top'>
 

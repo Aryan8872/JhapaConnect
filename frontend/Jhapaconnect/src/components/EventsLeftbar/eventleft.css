@@ -17,6 +17,7 @@
     display: flex;
     flex-flow: column wrap;
     gap: 1.2vmin;
+    width: 100%;
 }
 
 .event-search_section{

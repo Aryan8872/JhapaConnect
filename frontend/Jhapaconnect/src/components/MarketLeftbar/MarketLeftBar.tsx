@@ -144,7 +144,7 @@ const MarketLeftBar = ({ handleSearch, searchItems, categories, getCategories, s
 
                                 {cat.categoryTitle == "Free for sale"   &&
                                 
-                                <div style={{width:"45px",height:"45px",backgroundColor:"#E4E6EB", borderRadius:"50%", alignItems:"center",justifyContent:"center", display:"flex", flexWrap:"wrap", }}>
+                                <div className='market-category-image-container'>
                                 <img src='/assets/icons/freeforsale.png' style={{width:"75%", height:"75%", objectFit:"cover"}}/>
                                 </div>
                                 

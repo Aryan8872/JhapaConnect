@@ -199,5 +199,23 @@
     }
     
   }
+  @media (max-width:1450px) {
+    .postoverlay{
+        height: 80%;
+        width: 40%;
+        top: 15%;
+        left: 30%;
+    }
+    .postContainer{
+        height: 100%;
+    }
+    
+  }
+  @media (max-width:1050px) {
+    .postoverlay{
+        width: 60%;
+    }
+    
+  }
 
 

@@ -17,7 +17,7 @@ public interface Itemservice {
 
     List <ItemsDTO> searchItem(String keyword);
 
-    ItemsDTO updateItem(ItemsDTO itemdto , Integer itemId);
+    ItemsDTO updateItem(ItemsDTO itemdto , Integer itemId , Integer catId);
     void deleteItem(Integer postid);
 
 

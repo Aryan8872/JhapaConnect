@@ -9,10 +9,10 @@
     justify-content: center;
 }
 
-.modelContainer{
+.eventModelContainer{
     display: flex;
     flex-flow: column wrap;
-    gap: 2vmin;
+    gap: 1vmin;
     width: 30%;
     height: 85%;
     background-color: white;
@@ -227,11 +227,18 @@
     .hostname_section .invitype{
         width: 100%;
     }
+    .eventModelContainer{
+        height: 90%;
+    }
     
 }
 
 
 @media (max-width:768px) {
+    .eventModelContainer{
+        height: 95%;
+        width: 50%;
+    }
     .marketmodelContainer{
         width: 90%;
         height: 90%;

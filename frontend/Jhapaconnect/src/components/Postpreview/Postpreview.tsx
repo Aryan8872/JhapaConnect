@@ -200,11 +200,11 @@ console.log(comments)
               <section>
                 <img src='/assets/icons/profileuser.png' height={32} width={32} />
                 <span style={{ fontSize: "14px", display: "flex", flexFlow: "column wrap" , width:"max-content" }}>
-                <Link to="/profile" style={{ textDecoration: "none", color: "black", display: "flex" , gap: "0.8rem" }}>
+                <div onClick={()=>{navigate(`/profile/${user.id}`)}} style={{ textDecoration: "none", color: "black", cursor:"pointer", display: "flex" , gap: "0.8rem" }}>
 
                   <span>{firstName}</span> 
                   <span>{lastName}</span>
-                </Link>
+                </div>
                   <span style={{ fontSize: "12px", color: "#737373" }}>
                     {/* <FontAwesomeIcon icon="fa-thin fa-location-dot" style={{color: "#0d0d0d",}} /> */}
                     {location}

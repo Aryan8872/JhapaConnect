@@ -15,7 +15,7 @@ public interface EventService {
 
     List <EventsDTO> searchEvent(String keyword);
 
-    EventsDTO updateEvent(EventsDTO Eventdto , Integer EventId);
+    EventsDTO updateEvent(EventsDTO Eventdto , Integer EventId, Integer catId);
     void deleteEvent(Integer Eventid);
 
     void interested(Integer eventId);

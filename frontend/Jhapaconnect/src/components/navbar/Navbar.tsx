@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./navbar.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -18,6 +18,7 @@ const Navbar = () => {
   const lastName = userData.lastName;
   const email = userData.email;
   const phoneNo = userData.phoneNo;
+  const navigate = useNavigate();
 
   const [userImage,setUserImage] = useState()
   return (
@@ -60,7 +61,7 @@ const Navbar = () => {
 
       </div>
       <div className="navbar-right">
-        <div className="navbar-user">
+        <div className="navbar-user" onClick={()=>{navigate("/user-profile")}}>
           <img src={`${userImage? userImage:"/assets/icons/profileuser.png"}`} height={30} width={30} />
 
           <span>{firstName} {lastName}</span>

@@ -7,6 +7,7 @@ import com.example.jhapaconnect.jhapaconnect.entity.repository.UserRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.test.annotation.Rollback;
 import org.assertj.core.api.Assertions;
 
@@ -27,9 +28,20 @@ public class PostRepoTest {
     @Order(1)
     @Rollback(value = false)
     public void savePostTest() {
+        UserEntity user = new UserEntity();
+        user.setId(1);
+        user.setFirstName("test");
+        user.setLastName("user");
+        user.setEmail("useremail");
+        user.setPassword("password");
+        user.setPhoneno("978187721");
+        userRepository.save(user);
+
         Post post = new Post();
         post.setDescription("Test Description");
+        post.setLocation("test loc");
         post.setAddedDate(new Date());
+        post.setUser(user);
 
         Post savedPost = postRepository.save(post);
 
@@ -90,12 +102,15 @@ public class PostRepoTest {
         user.setFirstName("John");
         user.setLastName("Doe");
         user.setEmail("john@example.com");
+        user.setPassword("ahjwdawhjd");
+        user.setPhoneno("782781278");
 
         userRepository.save(user);
 
         Post post = new Post();
         post.setDescription("This is a sample post");
         post.setUser(user);
+        post.setLocation("testLoc");
 
         postRepository.save(post);
 
@@ -109,6 +124,7 @@ public class PostRepoTest {
     public void findByDescriptionContainingTest() {
         Post post = new Post();
         post.setDescription("This is a sample description containing keyword");
+        post.setLocation("location");
 
         postRepository.save(post);
 

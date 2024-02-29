@@ -15,9 +15,17 @@ const Postcard = ({ props,key }) => {
     const navigate = useNavigate();
     console.log(props)
     const localStorageData = localStorage.getItem('data');
+
     const parsedData = JSON.parse(localStorageData);
+  
     const userData = parsedData.data.user;
+  
     const userId = userData.id;
+    const firstname = userData.firstName;
+    const lastname = userData.lastName;
+    const email = userData.email;
+    const phoneNo = userData.phoneNo;
+   
   
     const { addedDate, description, id, imageName, location, tags, user } = props;
     const [image, setImage] = useState(" "); 
@@ -172,8 +180,7 @@ const Postcard = ({ props,key }) => {
                     <div className='post_head_user_div'>
                         <img src="assets/icons/connect.png" height={32} width={32} />
                         <div style={{ fontSize: "14px", display: "flex", flexFlow: "column wrap" }}>
-                            <div onClick={()=>{navigate(`/profile/${user.id}`)}} style={{ textDecoration: "none", color: "black", display: "flex", gap: "0.3rem" }}>
-
+                            <div onClick={()=>{navigate(`/profile/${user.id}`)}} style={{ textDecoration: "none",cursor:"pointer", color: "black", display: "flex", gap: "0.3rem" }}>
                                 <span>{firstName} </span>
                                 <span>{lastName}</span>
                             </div>
@@ -191,9 +198,11 @@ const Postcard = ({ props,key }) => {
 
                     <span className='post_date'>{addedDate}</span>
 
+                    { firstname === firstName && lastname=== lastName &&
                     <div className='options_icon' onClick={()=>{ !showOptions ? setShowOptions(true) :setShowOptions(false)}}>
                         <img src="assets/icons/options.png" />
                     </div>
+                    }
                     {
                         showOptions &&  
                         <div className='options_tray'>

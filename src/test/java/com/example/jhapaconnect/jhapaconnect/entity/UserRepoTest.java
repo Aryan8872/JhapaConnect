@@ -22,6 +22,8 @@ public class UserRepoTest {
         user.setEmail("test@example.com");
         user.setFirstName("John");
         user.setLastName("Doe");
+        user.setPassword("whakdjaw");
+        user.setPhoneno("28182912");
 
         UserEntity savedUser = userRepository.save(user);
 
@@ -75,6 +77,8 @@ public class UserRepoTest {
         UserEntity user = new UserEntity();
         user.setEmail("test@example.com");
         user.setFirstName("John");
+        user.setPassword("kjjdjjd");
+        user.setPhoneno("8787727");
         user.setLastName("Doe");
 
         userRepository.save(user);
@@ -92,6 +96,8 @@ public class UserRepoTest {
         user.setEmail("test2@example.com");
         user.setFirstName("Jane");
         user.setLastName("Doe");
+        user.setPassword("kjjdjjd");
+        user.setPhoneno("8787727");
 
         userRepository.save(user);
 

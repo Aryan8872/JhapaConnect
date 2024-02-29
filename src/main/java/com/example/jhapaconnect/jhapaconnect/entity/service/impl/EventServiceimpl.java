@@ -93,12 +93,15 @@ public class EventServiceimpl implements EventService {
     }
 
     @Override
-    public EventsDTO updateEvent(EventsDTO Eventdto, Integer EventId) {
+    public EventsDTO updateEvent(EventsDTO Eventdto, Integer EventId, Integer catId) {
         EventEntity event = eventrepo.findById(EventId).orElseThrow(()-> new NullPointerException());
+        EventCategory cat = catrepo.findById(catId).orElseThrow(()->new NullPointerException("category not found"));
         event.setDescription(Eventdto.getDescription());
         event.setLocation(Eventdto.getLocation());
+        event.setTitle(Eventdto.getTitle());
         event.setAddedDate( new Date());
         event.setImageName(Eventdto.getImageName());
+        event.setCategory(cat);
         event.setInterested(Eventdto.getInterested());
         event.setGoing(Eventdto.getGoing());
         EventEntity updatedEvent = eventrepo.save(event);

@@ -86,9 +86,9 @@ public class EventController {
         return  ResponseEntity.ok("sucessfully  deleted");
     }
 
-    @PutMapping("/update-event/{eventId}")
-    public ResponseEntity<EventsDTO> updateEvent(@RequestBody EventsDTO eventDTO, @PathVariable Integer eventId){
-        EventsDTO updateditem = service.updateEvent(eventDTO,eventId);
+    @PutMapping("/update-event/{eventId}/{catId}")
+    public ResponseEntity<EventsDTO> updateEvent(@RequestBody EventsDTO eventDTO, @PathVariable Integer eventId,@PathVariable("catId") Integer catId){
+        EventsDTO updateditem = service.updateEvent(eventDTO,eventId,catId);
         return  new ResponseEntity<>(updateditem,HttpStatus.OK);
     }
 
@@ -98,14 +98,14 @@ public class EventController {
         return  new ResponseEntity<List<EventsDTO>>(searchResult,HttpStatus.OK);
     }
 
-    @PostMapping("/event/image/upload/{eventId}")
-    public ResponseEntity<EventsDTO> uploadEventImage(@RequestParam("image") MultipartFile image, @PathVariable Integer eventId
+    @PostMapping("/event/image/upload/{eventId}/{catId}")
+    public ResponseEntity<EventsDTO> uploadEventImage(@RequestParam("image") MultipartFile image, @PathVariable("eventId") Integer eventId,@PathVariable("catId") Integer catId
     ) throws IOException {
 
         String fileName=  fileService.uploadImage(path,image);
         EventsDTO eventDTO =  service.getEventbyId(eventId);
         eventDTO.setImageName(fileName);
-        EventsDTO updatedevent = service.updateEvent(eventDTO,eventId);
+        EventsDTO updatedevent = service.updateEvent(eventDTO,eventId,catId);
         return  new ResponseEntity<EventsDTO>(updatedevent,HttpStatus.OK);
 
     }

@@ -20,7 +20,7 @@ import java.io.InputStream;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/auth")
+@RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 @CrossOrigin(origins =  "http://localhost:5173")
 
@@ -90,9 +90,9 @@ public class ItemController {
         return  ResponseEntity.ok("sucessfully  deleted");
     }
 
-    @PutMapping("/update/item/{itemId}")
-    public ResponseEntity<ItemsDTO> updateItem(@RequestBody ItemsDTO postDTO, @PathVariable Integer itemId){
-        ItemsDTO updateditem = service.updateItem(postDTO,itemId);
+    @PutMapping("/update/item/{itemId}/{catId}")
+    public ResponseEntity<ItemsDTO> updateItem(@RequestBody ItemsDTO postDTO, @PathVariable("itemId") Integer itemId,@PathVariable("catId") Integer catId){
+        ItemsDTO updateditem = service.updateItem(postDTO,itemId,catId);
         return  new ResponseEntity<>(updateditem,HttpStatus.OK);
     }
 
@@ -104,14 +104,14 @@ public class ItemController {
 
 
 
-    @PostMapping("/item/image/upload/{itemId}")
-    public ResponseEntity<ItemsDTO> uploadItemImage(@RequestParam("image") MultipartFile image, @PathVariable Integer itemId
+    @PostMapping("/item/image/upload/{itemId}/{catId}")
+    public ResponseEntity<ItemsDTO> uploadItemImage(@RequestParam("image") MultipartFile image, @PathVariable("itemId") Integer itemId,@PathVariable("catId") Integer catId
     ) throws IOException {
 
         String fileName=  fileService.uploadImage(path,image);
         ItemsDTO itemDTO =  service.getItembyId(itemId);
         itemDTO.setImageName(fileName);
-        ItemsDTO updateditem = service.updateItem(itemDTO,itemId);
+        ItemsDTO updateditem = service.updateItem(itemDTO,itemId,catId);
         return  new ResponseEntity<ItemsDTO>(updateditem,HttpStatus.OK);
 
     }

@@ -80,6 +80,7 @@ const ItemEditModel = ({onClose,itemId , show}) => {
     };
     
     const handleUpdate = async (data: itemData) => {
+        console.log(data)
         try {
             let responseImage; 
     
@@ -91,7 +92,7 @@ const ItemEditModel = ({onClose,itemId , show}) => {
                     authToken(localStorage.getItem("jwtToken"));
                 }
     
-                responseImage = await axios.post(`http://localhost:8080/api/v1/auth/item/image/upload/${itemId}`, formData, {
+                responseImage = await axios.post(`http://localhost:8080/api/v1/auth/item/image/upload/${itemId}/${catId}`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     }
@@ -104,7 +105,7 @@ const ItemEditModel = ({onClose,itemId , show}) => {
                 authToken(localStorage.getItem("jwtToken"));
             }
     
-            const responsePostDetails = await axios.put(`http://localhost:8080/api/v1/auth/update/item/${itemId}`, data);
+            const responsePostDetails = await axios.put(`http://localhost:8080/api/v1/auth/update/item/${itemId}/${catId}`, data);
     
             console.log('Image uploaded:', responseImage);
             console.log('Post details updated:', responsePostDetails);

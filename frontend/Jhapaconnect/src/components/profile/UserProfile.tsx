@@ -4,7 +4,7 @@ import ProfileModel from './ProfileModel'
 import { authToken } from '../../../root/pages/loginauth';
 import axios from 'axios'
 import Profilepost from './Profilepost';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const UserProfile = () => {
   const [userpost, setUserpost] = useState([]);
@@ -75,7 +75,7 @@ const UserProfile = () => {
           <div className='user-post-container'>
 
             {userpost.map((post,key)=>(
-              <Profilepost key={key} imageName={post.imageName}/>
+              <Profilepost key={key} imageName={post.imageName} postid={post.id}/>
             ))}
          
 

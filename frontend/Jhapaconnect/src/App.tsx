@@ -58,7 +58,6 @@ function App() {
                                 <Route path="/post/:postId" element={<Itempreview />} />
                                 <Route path="/user-profile" element={<Profile/>} />
                                 <Route path = "/profile/:Id" element={<UserProfile/>}/>
-                                <Route path="/item/:itemId/category/:catId" element={<Itempreview />} />
                                 <Route path="/add-item" element={<Additem />} />
                                 <Route path="/item-bill/:Id" element={<ItemBill/>}/>
                                 <Route path="/event-ticket/:Id" element={<EventTicket/>}/>

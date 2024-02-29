@@ -100,12 +100,15 @@ public class ItemServiceimpl implements Itemservice {
         return itemdto;    }
 
     @Override
-    public ItemsDTO updateItem(ItemsDTO itemdto, Integer itemId) {
+    public ItemsDTO updateItem(ItemsDTO itemdto, Integer itemId , Integer catId) {
         Item item = itemrepo.findById(itemId).orElseThrow(()-> new NullPointerException());
+        Category cat = catrepo.findById(catId).orElseThrow(()->new NullPointerException("category not found"));
         item.setDescription(itemdto.getDescription());
         item.setLocation(itemdto.getLocation());
         item.setAddedDate( new Date());
+        item.setTitle(itemdto.getTitle());
         item.setImageName(itemdto.getImageName());
+        item.setCategory(cat);
         Item updatedItem = itemrepo.save(item);
         return mapper.map(updatedItem,ItemsDTO.class);
     }

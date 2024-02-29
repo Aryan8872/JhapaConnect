@@ -12,7 +12,7 @@
     top: 0;
     background-color: #f8f8ff;
     color: #000;
-    z-index: 999;
+    z-index: 200;
     font-family: Poppins,sans-serif;
     color: black;
     
@@ -78,6 +78,7 @@
     align-items: center;
     gap: 10px;
     font-weight: 500;
+    cursor: pointer;
   }
   
   @media only screen and (min-width: 768px) and (max-width: 1023px) {

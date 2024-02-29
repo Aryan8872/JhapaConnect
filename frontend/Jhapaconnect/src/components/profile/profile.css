@@ -1,5 +1,5 @@
 .profile{
-  padding: 15px;
+  width: 100%;
 
 }
 .profile-container{
@@ -28,6 +28,7 @@
   
   height: 150px;
   width: 150px;
+
 }
 .user-pic-container img{
   height: 100%;
@@ -60,8 +61,10 @@
 
 .user-post-container{
   display: grid;
+
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 1vmax;
+  width: 100%;
 
   row-gap: 1.5vmin;
   height: 60%;

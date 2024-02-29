@@ -120,7 +120,7 @@ const EventpreviewModel = ({ open, onClose, eventId }) => {
           authToken(localStorage.getItem("jwtToken"));
         }
 
-        responseImage = await axios.post(`http://localhost:8080/api/v1/auth/event/image/upload/${eventId}`, formData, {
+        responseImage = await axios.post(`http://localhost:8080/api/v1/auth/event/image/upload/${eventId}/${categoryId}`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           }
@@ -133,7 +133,7 @@ const EventpreviewModel = ({ open, onClose, eventId }) => {
         authToken(localStorage.getItem("jwtToken"));
       }
 
-      const responsePostDetails = await axios.put(`http://localhost:8080/api/v1/auth/update-event/${eventId}`, data);
+      const responsePostDetails = await axios.put(`http://localhost:8080/api/v1/auth/update-event/${eventId}/${categoryId}`, data);
 
       console.log('Image uploaded:', responseImage);
       console.log('Post details updated:', responsePostDetails);

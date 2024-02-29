@@ -249,12 +249,12 @@ const showEdit = ()=>{
                     <div className='body_heading'>
                         Details
                     </div> <div className='body-details'>
-                        <span>{ interested + going} people responded</span>
-                        <span>{hostName}</span>
-                        <span>{location}</span>
-                        <span>{invitationType}</span>
+                        <span style={{display:"flex", gap:"0.5vmax",flexFlow:"row wrap" , alignItems:"center"}}> <img src="/assets/icons/people.png" height={20} width={20} /> {interested + going} people responded</span>
+                        <span style={{display:"flex",gap:"0.5vmax", flexFlow:"row wrap" , alignItems:"center"}}><img src="/assets/icons/person.png" height={20} width={20}/>Event by {hostName}</span>
+                        <span style={{display:"flex", gap:"0.5vmax", flexFlow:"row wrap" , alignItems:"center"}}> <img src="/assets/icons/location.png" width={20} height={20}/>{location}</span>
+                        <span style={{display:"flex", gap:"0.5vmax",flexFlow:"row wrap" , alignItems:"center"}}>{invitationType === "public" && <img src='/assets/icons/public.png' height={20 } width={20}/>} {invitationType== "private" && <img src="/assets/icons/private.png" height={20} width={20}/>}{invitationType}</span>
                     </div>
-                    <div>
+                    <div style={{paddingLeft:"20px"}}>
                         <span>{description}</span>
                     </div>
                 </div>
@@ -263,7 +263,10 @@ const showEdit = ()=>{
 
                 <div className='body-details-right'>
                     <span>Tickets</span>
-                    <button onClick={()=>{navigate(`/event-ticket/${id}`)}}>Get tickets</button>
+                    <button style={{padding:"0 5px 5px 5px", display:"flex", flexFlow:"row wrap", alignItems:"center", borderRadius:"0.4rem", border:"0.2px solid", justifyContent:"center"}} onClick={()=>{navigate(`/event-ticket/${id}`)}}>
+                        <img src="/assets/icons/tickets.png" width={20} height={20}/>
+                        Get tickets
+                        </button>
                 </div>
 
             </div>

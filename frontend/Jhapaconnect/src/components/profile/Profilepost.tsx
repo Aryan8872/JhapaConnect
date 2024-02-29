@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { authToken } from '../../../root/pages/loginauth';
+import { useNavigate } from 'react-router-dom';
 
-const Profilepost = ({imageName}) => {
+const Profilepost = ({imageName , postid}) => {
 
     const [image, setImage] = useState();
     const [loading, setLoading] = useState(true)
+    const navigate = useNavigate();
+
 
     const [name,setName] = useState();
   const getPostimage = async () => {
@@ -40,7 +43,7 @@ const Profilepost = ({imageName}) => {
     return <div>loading</div>
 }
   return (   
-    <div className='user-post'>
+    <div className='user-post' onClick={()=>{navigate(`/post/${postid}`)}}>
       <div className='profile-post'>
         <img src={image} />
 

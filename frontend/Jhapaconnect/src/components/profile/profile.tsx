@@ -78,7 +78,7 @@ const Profile = () => {
           <div className='user-post-container'>
 
             {userpost.map((post,key)=>(
-              <Profilepost key={key} imageName={post.imageName}/>
+              <Profilepost key={key} imageName={post.imageName} postid={post.id}/>
             ))}
          
 
