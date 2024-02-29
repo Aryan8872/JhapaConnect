@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./pages-css/add-item.css"
 import {Link, useNavigate} from "react-router-dom"
-import Itempreview from '@/components/Postpreview/Postpreview'
+import Postpreview from '../../Components/Postpreview/Postpreview'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ZodType, z } from 'zod'

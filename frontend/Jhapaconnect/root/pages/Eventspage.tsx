@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import "./pages-css/events.css"
 import { Flame } from 'lucide-react'
 import axios from 'axios';
-import EventCard from '../../src/components/Eventcard/EventCard';
+import EventCard from '../../Components/Eventcard/EventCard';
 import { authToken } from './loginauth';
-import Navbar from '@/components/navbar/Navbar';
-import EventsLeftbar from '@/components/EventsLeftbar/EventsLeftbar';
-import EventModal from '@/components/EventsLeftbar/EventModal';
-import Bottombar from '@/components/BottomBar/Bottombar';
+import Navbar from '../../Components/navbar/Navbar';
+import EventsLeftbar from '../../Components/EventsLeftbar/EventsLeftbar';
+import EventModal from '../../Components/EventsLeftbar/EventModal';
+import Bottombar from '../../Components/BottomBar/Bottombar';
 
 
 const Events = () => {

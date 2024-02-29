@@ -1,8 +1,8 @@
-import Sharepost from "@/components/post add/Sharepost"
-import Stories from "@/components/stories/Stories"
+import Sharepost from "../../Components/post add/Sharepost"
+import Stories from "../../Components/stories/Stories"
 import { useEffect, useState } from "react"
 import "./pages-css/home.css"
-import Postcard from "@/components/post/Postcard"
+import Postcard from "../../Components/post/Postcard"
 import axios from "axios"
 import { authToken } from "./loginauth"
 

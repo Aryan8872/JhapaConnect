@@ -23,7 +23,7 @@ const Register = () => {
         firstName:z.string().min(3,{message:"Firstname is not suitable"}),
         lastName:z.string().min(4,{message:"Lastname is not valid"}),
         email:z.string().email({message:"Invalid email address"}),
-        phoneNo:z.number().int().min(10,{message:"Phone number must be 10 digits long"}),
+        phoneNo:z.string().min(10),
         password:z.string().min(5,{message:"Password must be more than 5 characters"}).max(20)
     })
 

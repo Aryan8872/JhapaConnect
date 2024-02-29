@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import "./pages-css/market.css"
 import { Link, Outlet } from 'react-router-dom'
 import axios from 'axios';
-import ItemCard from '@/components/Itemcard/ItemCard';
+import ItemCard from '../../Components/Itemcard/ItemCard';
 import { authToken } from './loginauth';
-import Navbar from '@/components/navbar/Navbar';
-import MarketLeftBar from '@/components/MarketLeftbar/MarketLeftBar';
-import Bottombar from '@/components/BottomBar/Bottombar';
+import Navbar from '../../Components/navbar/Navbar';
+import MarketLeftBar from '../../Components/MarketLeftbar/MarketLeftBar';
+import Bottombar from '../../Components/BottomBar/Bottombar';
 
 const Marketplace = () => {
 

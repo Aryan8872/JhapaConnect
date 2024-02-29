@@ -7,5 +7,5 @@ export {default as Register} from './Register.tsx'
 export {default as Eventspage} from './Eventspage.tsx'
 export {default as Marketplace} from './Marketplace.tsx'
 export {default as Additem} from './Additem.tsx'
-export {default as Modal} from '../../src/components/EventsLeftbar/EventModal.tsx'
+export {default as Modal} from '../../Components/EventsLeftbar/EventModal.tsx'
 

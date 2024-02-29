@@ -29,6 +29,5 @@
       ]
     }
   },
-  "include": ["src", "src/components/EventsLeftbar/EventModal.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
