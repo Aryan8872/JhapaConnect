@@ -1,0 +1,128 @@
+.event-ticket{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.ticket-container{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 2vmin;
+    width: 70%;
+    background-color: white;
+    padding: 20px;
+}
+.ticket-upper{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    gap: 1.2vmin;
+}
+.company-section{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+.sucess-image{
+    display: flex;
+}
+
+.message-text{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    gap: 1vmin;
+}
+.message-1{
+    color: #00ba00;
+}
+.ticket-body{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 2.2vmin;
+}
+.id-section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #f0f2f5;
+}
+
+.ticket-section{
+    display: flex;
+    flex-wrap:  wrap;
+    justify-content: space-between;
+    background-color: #f0f2f5;
+}
+
+.ticket-eventname{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1.2vmin;
+    align-items: center;
+
+}
+.ticket-eventname .name{
+    font-size: 0.875rem;
+    color: #65676B;
+
+}
+.ticket-eventdate{
+    display: flex;
+    flex-flow:column wrap;
+    gap:1.2vmin;
+    align-items: center;
+
+}
+.ticket-eventdate .date{
+    font-size: 0.875rem;
+    color: #65676B;
+
+}
+.ticket-eventlocation{
+    display: flex;
+    flex-flow:column wrap;
+    gap:1.2vmin;
+    align-items: center;
+
+}
+.ticket-eventlocation .location{
+    font-size: 0.875rem;
+    color: #65676B;
+}
+
+.ticket-user-detail{
+    display: flex;
+    flex-flow: column wrap;
+    border: 0.3px solid black;
+    border-radius: 0.4rem;
+}
+.ticket-user-detail span{
+    height: 30px;
+    background-color: #f0f2f5;
+    border-radius: 0.4rem;
+
+}
+
+.ticket-user-detail div span{
+    background-color: inherit;
+    font-size: 0.875rem;
+    color: #65676B;
+
+}
+.details div{
+    display: flex;
+    padding: 5px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+@media (max-width:768px) {
+    .ticket-container{
+        width: 100%;
+    
+    }
+  
+  
+
+    
+}

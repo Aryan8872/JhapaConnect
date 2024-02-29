@@ -4,102 +4,46 @@
     box-sizing: border-box;
     font-family: Poppins, sans-serif;
 }
+a{
+    display: flex ;
+    width: min-content;
+}
 .market{
-    background-color: white;
-}
-.search_section{
     display: flex;
-    flex-wrap:  wrap;
-    justify-content: center;
+    gap: 1.4rem;
+    flex-wrap:wrap;
+    width: 100%;
+    height: 100vh;
+    position: relative;
 
-}
-.search_box{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.2rem;
-    width: 40%;
-    border: 0.2rem solid #ebedf0;
-    border-radius: 2rem;
-    height: 45px;
-    padding-right: 0.6rem;
-
-}
-
-.search_box input{
-    flex: 1;
-    width: 88%;
-    border-radius: 1.4rem;
-    text-align: center;
-    height: 100%;
-    border: none;
-    
-}
-.search_box button{
-    height: 85%;
-    width: 37px;
-    background-color: inherit;
-    border: none;
-}
-.search_box button img{
-    height: 100%;
-    width: 90%;
-    object-fit: cover;
-}
-
-@media (max-width:768px) {
-    .search_box{
-        width: 70%;
-        padding-right: 0.4rem;
-        
-    }
-
-    
 }
 
 
 .items-container{
     display: grid;
     padding: 15px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 1vmax;
+    width: 73%;
+    grid-template-columns: 1fr 1fr 1fr ;
     row-gap: 1.5vmin;
-}
-.item{
-    display: flex;
-    flex-flow: column wrap;
-    padding: 10px;
-    gap: 1.2vmin;
-    width: 255px;
-    height: 360px;
-    border: 0.12rem solid #ebedf0;
+    background-color: #ffff;
+    overflow-y: scroll;
+    height: 100vh;
 
+}
+.items-container::-webkit-scrollbar{
+    display: none;
 }
 @media (max-width:768px) {
     .items-container{
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 5vmin;
-
-    }
-
-    .item{
-        width: 175px;
-        height:275px;
+     
     }
     
-}
-.image_container{
-    width: 100%;
-    height: 70%;
-    border-bottom:0.12rem solid #ebedf0 ;
-}
-.image_container img{
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+   
+
+ 
+    
 }
 
-.product_info{
-    display: flex;
-    flex-flow: column wrap;
-    padding-left: 1.2vmax;
-}
+

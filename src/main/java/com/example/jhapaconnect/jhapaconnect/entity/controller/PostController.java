@@ -25,8 +25,9 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/api/v1/auth/" )
+@RequestMapping(value = "/api/v1/auth" )
 @RequiredArgsConstructor
+@CrossOrigin(origins =  "http://localhost:5173")
 
 public class PostController {
     private final PostService service;
@@ -36,34 +37,23 @@ public class PostController {
     private String path;
 
 
-        @PostMapping("/user/{userId}/category/{catId}/posts")
+        @PostMapping("/user/{userId}/createpost")
         public ResponseEntity<PostDTO> createPost(
                 @RequestBody PostDTO dto,
-                @PathVariable Integer userId,
-                @PathVariable Integer catId
+                @PathVariable Integer userId
         ) {
-
-
-
-
-            PostDTO post = service.createPost(dto, userId, catId);
+            PostDTO post = service.createPost(dto, userId);
 
             return new ResponseEntity<>(post, HttpStatus.CREATED);
         }
 
     @GetMapping("/user/{userId}/posts")
 
-    public ResponseEntity<List<PostDTO>> getPostbyuser(@PathVariable Integer userId){
-        List<PostDTO> posts = service.getPostbyUser(userId);
-        return  new ResponseEntity<List<PostDTO>>(posts,HttpStatus.OK);
+    public List<PostDTO> getPostbyuser(@PathVariable Integer userId){
+      return service.getPostbyUser(userId);
     }
 
-    @GetMapping("/category/{catId}/posts")
 
-    public ResponseEntity<List<PostDTO>> getPostbycategory(@PathVariable Integer catId){
-        List<PostDTO> posts = service.getPostbyCategory(catId);
-        return  new ResponseEntity<List<PostDTO>>(posts,HttpStatus.OK);
-    }
 
     @GetMapping("/posts")
     public List<PostDTO> getallPosts(
@@ -92,6 +82,8 @@ public class PostController {
         return  ResponseEntity.ok("sucessfully  deleted");
     }
 
+
+
     @PutMapping("update/posts/{postId}")
     public ResponseEntity<PostDTO> updatepost(@RequestBody PostDTO postDTO, @PathVariable Integer postId){
         PostDTO updatedpost = service.updatePost(postDTO,postId);
@@ -118,9 +110,8 @@ public class PostController {
 
     }
 
-    @GetMapping("/post/user/{userId}/{postId}")
-
-    public ResponseEntity<PostDTO> getPostbyid(@PathVariable("userId")Integer userid,@PathVariable("postId") Integer postid){
+    @GetMapping("/post/{postId}")
+    public ResponseEntity<PostDTO> getPostbyid(@PathVariable("postId") Integer postid){
            PostDTO dto =  service.getPostbyId(postid);
             return new ResponseEntity<>(dto, HttpStatus.OK);
     }

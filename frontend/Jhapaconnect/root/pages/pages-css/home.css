@@ -1,9 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 .home{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
     padding: 20px 70px;
     background-color: #f0f2f5;
     font-family: Poppins,sans-serif;
     font-weight: 500;
     justify-content: center;
+    z-index: 1;
 
 }
+.post-sharing{
+    width: 80%;
+}
+@media  (max-width: 767px) {
+    .home{
+        padding: 10px;
+    }
+    .post-sharing{
+        width: 80%;
+    }
+    .post_parent{
+        width: 100%;
+    }
+   
+    
+  
+  }

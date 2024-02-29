@@ -20,8 +20,10 @@ import java.io.InputStream;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/auth/")
+@RequestMapping("api/v1/auth")
 @RequiredArgsConstructor
+@CrossOrigin(origins =  "http://localhost:5173")
+
 public class ItemController {
     private final Itemservice service;
     private final Fileservice fileService;
@@ -54,10 +56,10 @@ public class ItemController {
         return  new ResponseEntity<List<ItemsDTO>>(posts,HttpStatus.OK);
     }
 
-    @GetMapping("/category/{catId}/items")
+    @GetMapping("/category/{title}/items")
 
-    public ResponseEntity<List<ItemsDTO>> getItembycategory(@PathVariable Integer catId){
-        List<ItemsDTO> posts = service.getItembyCategory(catId);
+    public ResponseEntity<List<ItemsDTO>> getItembycategory(@PathVariable("title") String title){
+        List<ItemsDTO> posts = service.getItembyCategory(title);
         return  new ResponseEntity<List<ItemsDTO>>(posts,HttpStatus.OK);
     }
 
@@ -83,12 +85,12 @@ public class ItemController {
 
 
     @DeleteMapping("/item/delete/{id}")
-    public ResponseEntity <String> delteItem(@RequestParam("id") Integer id){
+    public ResponseEntity <String> delteItem(@PathVariable("id") Integer id){
         service.deleteItem(id);
         return  ResponseEntity.ok("sucessfully  deleted");
     }
 
-    @PutMapping("update/item/{postId}")
+    @PutMapping("/update/item/{itemId}")
     public ResponseEntity<ItemsDTO> updateItem(@RequestBody ItemsDTO postDTO, @PathVariable Integer itemId){
         ItemsDTO updateditem = service.updateItem(postDTO,itemId);
         return  new ResponseEntity<>(updateditem,HttpStatus.OK);
@@ -114,9 +116,9 @@ public class ItemController {
 
     }
 
-    @GetMapping("/item/user/{userId}/{postId}")
+    @GetMapping("/item/{postId}")
 
-    public ResponseEntity<ItemsDTO> getPostbyid(@PathVariable("userId")Integer userid,@PathVariable("postId") Integer itemid){
+    public ResponseEntity<ItemsDTO> getPostbyid(@PathVariable("postId") Integer itemid){
         ItemsDTO dto =  service.getItembyId(itemid);
         return new ResponseEntity<ItemsDTO>(dto, HttpStatus.OK);
     }

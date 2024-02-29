@@ -1,5 +1,6 @@
 package com.example.jhapaconnect.jhapaconnect.entity.repository;
 
+import jakarta.transaction.Transactional;
 import  org.springframework.data.jpa.repository.JpaRepository;
 import com.example.jhapaconnect.jhapaconnect.entity.entity.UserEntity;
 import org.springframework.data.jpa.repository.Query;

@@ -4,10 +4,13 @@
 .outlet{
     display: flex;
     flex-flow: column wrap;
-    flex:6;
+    flex:5;
     background-color: #f0f2f5;
-    overflow:auto;
+    overflow-y:scroll;
 
+}
+.outlet::-webkit-scrollbar{
+    display: none;
 }
 
 @media (max-width:768px) {

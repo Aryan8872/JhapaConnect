@@ -13,6 +13,9 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<Item,Integer> {
     List<Item> findByUser(UserEntity user);
     List <Item> findByCategory(Category category);
-    List <Item> findByDescriptionContaining(String title);
+    List <Item> findByTitleContaining(String title);
+
+    List<Item>findItemByCategoryCategoryTitleContaining(String title);
+
 
 }

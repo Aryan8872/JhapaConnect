@@ -1,28 +1,34 @@
 import Sharepost from "@/components/post add/Sharepost"
-import LeftSidebar from "@/components/shared/LeftSidebar"
 import Stories from "@/components/stories/Stories"
-import { Grid } from "lucide-react"
 import { useEffect, useState } from "react"
 import "./pages-css/home.css"
 import Postcard from "@/components/post/Postcard"
+import axios from "axios"
+import { authToken } from "./loginauth"
 
 const Home = () => {
     const [data, setData] = useState([])
+ 
     useEffect(() => {
         getAPIdata();
     }, [])
 
     const getAPIdata = async () => {
         try {
-            const dataRespone = await fetch('http://localhost:8080/api/v1/auth/posts');
-            console.log(dataRespone)
-            if (!dataRespone.ok) {
-                throw new Error("failed to load data")
-            }
-            const responseJSONdata = await dataRespone.json();
-            console.log(responseJSONdata)
-            setData(responseJSONdata);
+            if(localStorage.getItem("jwtToken")){
+                authToken(localStorage.getItem("jwtToken"))
+                const dataRespone = await axios.get("http://localhost:8080/api/v1/auth/posts"
+                ).then((res)=>{
+                    setData(res.data)
+                });
+                console.log(dataRespone)
 
+            }
+
+            else{
+                alert("invalid token")
+            }
+          
         }
         catch (error) {
             console.log(error)

@@ -1,0 +1,231 @@
+.market-left_bar{
+    width: 20%;
+    display: flex;
+    padding: 15px ;
+    flex-flow: column wrap;
+    gap: 2vmin;
+    position: sticky;
+    align-items: flex-start;
+    
+}
+.search_section{
+    display: flex;
+    flex-wrap:  wrap;
+    justify-content: center;
+    width: 100%;
+
+}
+.search_section form{
+    width: 100%;
+}
+.search_box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    width: 40%;
+    border: 0.2rem solid #ebedf0;
+    border-radius: 2rem;
+    height: 45px;
+    padding-right: 0.6rem;
+
+}
+
+.search_box input{
+    flex: 1;
+    width: 88%;
+    border-radius: 1.4rem;
+    text-align: center;
+    height: 100%;
+    border: none;
+    
+}
+.search_box button{
+    height: 85%;
+    width: 37px;
+    background-color: inherit;
+    border: none;
+}
+.search_box button img{
+    height: 100%;
+    width: 90%;
+    object-fit: cover;
+}
+
+
+@media (max-width:768px) {
+    
+
+    .search_section{
+        width: 100%;
+    }
+    .search_box{
+        width: 100%;
+        padding-right: 0.4rem;
+        
+    }
+
+    
+}
+
+.market-left_links{
+    display: flex;
+    flex-flow: column wrap;
+    cursor: pointer;
+    gap: 2vmin;
+    font-size: 0.845rem;
+    width: 100%;
+}
+.links-container{
+    width:100%;
+    display:flex ;
+    align-items:center;
+    gap:1vmax
+}
+
+.links-container:active{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.market_links{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    height: 45px;
+    border-radius: 50%;
+    width: 45px;
+    background-color: #E4E6EB;
+}
+.market_links img{
+    height: 75%;
+    width: 75%;
+    object-fit: cover;
+}
+.category_section{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1.2vmin;
+    overflow-y: scroll;
+
+}
+.category_section::-webkit-scrollbar{
+    display: none;
+}
+
+.category_title_div{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1vmax;
+}
+
+.category_list{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1.2vmin;
+    font-size: 0.899rem;
+
+}
+.market-category-image-container{
+    width: 45px;
+    height: 45px;
+    background-color: #E4E6EB;
+    border-radius:50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.market-category-span{
+    color: #717171;
+     display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+.category{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1.2vmin;
+}
+
+@media (max-width:768px) {
+    .market-left_bar{
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .market-category-image-container{
+        display: none;
+    }
+    .market-category-span{
+        width: max-content;
+        padding: 8px;
+        height: min-content;
+        -webkit-box-shadow: -3px 8px 31px -6px rgba(66, 68, 90, 1);
+        -moz-box-shadow: -3px 8px 31px -6px rgba(66, 68, 90, 1);
+        box-shadow: -3px 8px 31px -6px rgba(66, 68, 90, 1);
+        background-color: #0866FF;
+        color: white;
+        border-radius: 0.3rem;
+    }
+
+    .category_section{
+        display: flex;
+        flex-flow: row wrap;
+        width: 100%;
+
+    }
+    .category_list{
+        display: flex;
+        width: 100%;
+        flex-flow: row wrap;
+    }
+
+    .category_list div{
+        font-size: 0.575rem;
+    }
+    .market-left_links{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .market{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+
+    .category_title_div{
+        display: none   ;
+        justify-content: center;
+        align-items: center;
+    }
+    .category{
+        display: flex;
+        flex-flow: row ;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2vmax;
+        width: 320px;
+        overflow: auto;
+        width: 100%;
+
+    }
+  
+    
+}
+@media (max-width:1035px) {
+    .market-category-image-container{
+        display: none;
+    }
+    .category_section{
+        gap: 2.5vmin;
+    }
+    .category{
+        font-size: 0.975rem;
+        gap: 2.5vmin;
+    }
+    
+}

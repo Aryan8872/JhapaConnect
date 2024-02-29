@@ -1,0 +1,154 @@
+.overlay{
+    z-index:200 ;
+    height:100%;
+    width:100%;
+    background-color:rgba(0,0,0,0.1);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usermodelContainer{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 3vmin;
+    width: 30%;
+    height: 60%;
+    border-radius: 0.4rem;
+    background-color: white;
+}
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 15px;
+    border-bottom: 1px solid black ;
+}
+.back{
+    height: 40px;
+    display: flex;
+    position: absolute;
+    width: 40px;
+    font-size: 30px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    right: 15px;
+   
+    background-color: rgba(0,0,0,0.1);
+}
+
+.username{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vmax;
+    align-items: center;
+    padding-left: 2vmax;
+
+}
+.username div{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+}
+.username div img{
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.username section span{
+    font-size: 0.875rem;
+
+}
+.usermodelContainer .form-body{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 3vmin;
+}
+.user-profile-form{
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4vmin;
+
+}
+.namesection{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9vmax;
+    justify-content: center;
+
+}
+.namesection div{
+    width:46%;
+
+}
+.email_input{
+    width: 90%;
+    height: 40px;
+    border: 0.5px solid rgba(0,0,0,0.4);
+    text-align: center;
+
+}
+.namesection input{
+    border: 0.5px solid rgba(0,0,0,0.4);
+    height: 40px;
+    text-align: center;
+
+ 
+
+}
+.phoneno_input{
+    height: 40px;
+    text-align: center;
+    width: 90%;
+    border: 0.5px solid rgba(0,0,0,0.4);
+
+}
+.location-input{
+    height: 40px;
+    width: 90%;
+    text-align: center;
+    border: 0.5px solid rgba(0,0,0,0.4);
+
+
+
+}
+.event-form input{
+    background-color: transparent ;
+    /* width: 100%; */
+
+}
+.user-prof-forms{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1.4vmin;
+    width: 80%;
+    align-items: center;
+}
+.button_section{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+.button_section button{
+    width: 90%;
+    background-color: #0084FF;
+    color: white;
+    border: none;
+    font-size: 0.875rem;
+    padding: 10px;
+    border-radius: 0.75rem;
+
+}

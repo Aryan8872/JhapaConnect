@@ -14,6 +14,10 @@
     border-radius: 10px;
     min-height: 600px;
     overflow: hidden;
+    height: 70%;
+    -webkit-box-shadow: 1px 4px 13px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 4px 13px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 4px 13px 0px rgba(0,0,0,0.75);
   }
   
   .register-left {
@@ -22,11 +26,19 @@
       url("https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600")
         center;
     background-size: cover;
-    padding: 50px;
+    padding: 50px;      
+    color: white;
+  }
+  .register-left-text{
     display: flex;
     flex-direction: column;
     gap: 30px;
-    color: white;
+
+  }
+
+  .register-left a{
+    text-decoration: none;
+
   }
   
   .register-left h1 {
@@ -36,10 +48,11 @@
   
   .register-left span {
     font-size: 14px;
+    
   }
   
   .register-left button {
-    width: 50%;
+    width: 100%;
     padding: 10px;
     border: none;
     background-color: white;
@@ -53,7 +66,7 @@
     padding: 50px;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 20px;
     justify-content: center;
   }
   
@@ -77,9 +90,75 @@
     width: 50%;
     padding: 10px;
     border: none;
-    background-color: #938eef;
+    background-color: #0866ff;
     color: white;
     font-weight: bold;
     cursor: pointer;
+  }
+
+  .mobile_bottom_register{
+    display: none;
+  }
+
+  @media (max-width:1380px) {
+    .register-left{
+      flex:1;
+      width: 45%;
+      padding: 15px;
+
+    }
+    .register-left-text h1{
+      font-size: 3rem;
+    }
+    .register-right{
+      flex: 1;
+      width: 50%;
+      padding: 15px;
+    }
+    
+  }
+
+  @media (max-width:965px) {
+    .register-left-text{
+      gap: 10px;
+    }
+    .register-left-text p {
+      font-size: 0.875rem;
+    }
+    .register-left-text span{
+      font-size: 0.875rem;
+    }
+
+  }
+
+  @media (max-width:768px) {
+    .register-card{
+      width: 80%;
+    }
+    .register-left{
+      display: none;
+    }
+
+    .register-right form button{
+      width: 100%;
+    }
+
+    .mobile_bottom_register{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .mobile_bottom_register span{
+      display: flex;
+      gap: 1vmax;
+    }
+    .mobile_bottom_register span button{
+      border: none;
+      background-color: inherit;
+      color: #0866ff;
+      cursor: pointer;
+    }
+
+    
   }
   

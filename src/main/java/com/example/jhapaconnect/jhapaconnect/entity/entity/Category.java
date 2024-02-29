@@ -22,9 +22,7 @@ public class Category {
     @Column(name="title" , nullable = false)
     private String categoryTitle;
 
-    //one category can have multiple posts one to many
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL ,fetch = FetchType.LAZY)   //mapped by category colum of post
-    private List<Post>  posts = new ArrayList<>();
+
 
 
 

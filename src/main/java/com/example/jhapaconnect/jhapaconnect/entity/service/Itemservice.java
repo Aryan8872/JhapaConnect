@@ -12,7 +12,7 @@ public interface Itemservice {
     List<ItemsDTO> getAllItems(String sortBy , String sortDirect);
     ItemsDTO getItembyId(Integer itemid);
 
-    List<ItemsDTO> getItembyCategory(Integer catID);
+    List<ItemsDTO> getItembyCategory(String title);
     List <ItemsDTO> getItembyUser(Integer userId);
 
     List <ItemsDTO> searchItem(String keyword);
@@ -21,5 +21,5 @@ public interface Itemservice {
     void deleteItem(Integer postid);
 
 
-    String savePostImage(String path, MultipartFile file) throws IOException;
+
 }

@@ -78,11 +78,14 @@ public class ItemServiceimpl implements Itemservice {
 
         Item item = itemrepo.findById(itemid).orElseThrow(()-> new NullPointerException("post of" + itemid +"not found"));
         ItemsDTO itemdto = mapper.map(item,ItemsDTO.class);
-        return itemdto;    }
+        return itemdto;
+    }
 
     @Override
-    public List<ItemsDTO> getItembyCategory(Integer catID) {
-        return null;
+    public List<ItemsDTO> getItembyCategory(String title) {
+            List <Item> items = itemrepo.findItemByCategoryCategoryTitleContaining(title);
+            List <ItemsDTO> dto = items.stream().map((item)->mapper.map(item,ItemsDTO.class)).collect(Collectors.toList());
+            return  dto;
     }
 
     @Override
@@ -92,7 +95,7 @@ public class ItemServiceimpl implements Itemservice {
 
     @Override
     public List<ItemsDTO> searchItem(String keyword) {
-        List<Item> items = itemrepo.findByDescriptionContaining(keyword);
+        List<Item> items = itemrepo.findByTitleContaining(keyword);
         List<ItemsDTO> itemdto = items.stream().map((item)->mapper.map(item,ItemsDTO.class)).collect(Collectors.toList());
         return itemdto;    }
 
@@ -114,26 +117,5 @@ public class ItemServiceimpl implements Itemservice {
 
     }
 
-    @Override
-    public String savePostImage(String path, MultipartFile file) throws IOException {
 
-        // get file name
-        String name = file.getOriginalFilename();  //name of the uploaded file without any changes(original)
-
-        //create full path
-        String filePath = path + File.separator + name;
-
-        //create images folder images if not
-
-        File f = new File(path);  //path upto images folder
-        if (!f.exists()) {   //check if folder with the path exists
-            f.mkdir();
-        }
-        //file copy
-
-        Files.copy(file.getInputStream(), Paths.get(filePath));  //source,target
-
-        return name; //return file name
-
-    }
 }

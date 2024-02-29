@@ -5,6 +5,7 @@ import com.example.jhapaconnect.jhapaconnect.entity.config.JwtService;
 import com.example.jhapaconnect.jhapaconnect.entity.entity.Roles;
 import com.example.jhapaconnect.jhapaconnect.entity.entity.UserEntity;
 import com.example.jhapaconnect.jhapaconnect.entity.repository.UserRepository;
+import com.example.jhapaconnect.jhapaconnect.entity.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +20,7 @@ public class AuthenticationService {
     private  final PasswordEncoder passwordEncoder;
     private  final JwtService jwtService;
     private  final AuthenticationManager authenticationManager;
+    private final UserService userService;
 
 
     public AuthenticationResponse register(RegisterRequest request) {
@@ -42,9 +44,13 @@ public class AuthenticationService {
 
         //if the user is valid generate the token and send it back to user
         var user= repository.findByEmail(request.getEmail()).orElseThrow();
+        var userdet = userService.getUserdetailByUsername(request.getEmail());
         var jwtToken = jwtService.generateToken(user);
-        return  AuthenticationResponse.builder().token(jwtToken).
+        return  AuthenticationResponse.builder().token(jwtToken).user(userdet).user(userdet).
                 build();
+
+
+
 
 
     }

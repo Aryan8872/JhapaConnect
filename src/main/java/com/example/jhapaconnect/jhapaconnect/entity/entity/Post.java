@@ -43,11 +43,10 @@ public class Post {
 
     private String imageName;
 
-    private Date addedDate;
-
-
     @ManyToOne
-    private Category category;
+    private Likes like;
+
+    private Date addedDate;
 
     @ManyToOne
     private UserEntity user;

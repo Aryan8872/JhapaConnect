@@ -10,17 +10,17 @@ import java.io.IOException;
 import java.util.List;
 
 public interface PostService{
-    PostDTO createPost(PostDTO postdto,Integer userId, Integer catId );
+    PostDTO createPost(PostDTO postdto,Integer userId);
     List <PostDTO> getAllPost(String sortBy ,String sortDirect);
     PostDTO getPostbyId(Integer postid);
 
-    List<PostDTO> getPostbyCategory(Integer catID);
     List <PostDTO> getPostbyUser(Integer userId);
 
     List <PostDTO> searchPost(String keyword);
 
     PostDTO updatePost(PostDTO postdto , Integer postId);
     void deletePost(Integer postid);
+
 
 
     String savePostImage(String path,MultipartFile file) throws IOException;

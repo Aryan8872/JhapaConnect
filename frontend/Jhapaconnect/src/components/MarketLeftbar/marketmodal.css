@@ -1,0 +1,290 @@
+.marketoverlay{
+    z-index: 200;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.1);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.marketmodelContainer{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 3vmin;
+    width: 30%;
+    height: 70%;
+    background-color: white;
+}
+.event-form input{
+    text-align: center;
+}
+
+.market-form .forms input[type="file"] {
+    position: relative;
+    width: 80%;
+  }
+
+  .market-form .forms input[type="text"]{
+    width: 100%;
+    text-align: center;
+    height: 20%;
+    border-radius: 0.4rem;
+    border: 0.3px solid rgba(0,0,0,0.2);
+  }
+
+
+  
+.market-form .forms input[type="file"]::file-selector-button {
+    width: 50px;
+    height: 45px;
+    color: transparent;
+    margin-left: 1.8vmax;
+
+  }
+  .file_uploader{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Faked label styles and icon */
+.market-form  input[type="file"]::before {
+    position: absolute;
+    pointer-events: none;
+    margin-left: 1.8vmax;
+    top: 10px;
+    left: 16px;
+    height: 20px;
+    width: 20px;
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230964B0'%3E%3Cpath d='M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zM7 9l1.41 1.41L11 7.83V16h2V7.83l2.59 2.58L17 9l-5-5-5 5z'/%3E%3C/svg%3E");
+  }
+  select{
+    height: 40px;
+  }
+@media (max-width:768px) {
+    .marketmodelContainer{
+        width: 90%;
+        display: flex;
+        flex-flow: column wrap;
+        top: 25px;
+        width: 70%;
+        position: absolute;
+        height: 85%;
+
+    }
+    .invitype ,.hostnameinput,.location-input{
+        width: 100%;
+    }
+    
+
+    select{
+        width: 100%;
+        height: 40px;
+    }
+
+    .description_input{
+        height: 100px;
+    }
+    
+    
+}
+
+@media (max-width:1120px) {
+    select{
+        width: 80%;
+        height: 40px;
+    }
+ 
+    
+}
+@media (max-width:1000px) {
+   
+    
+}
+
+
+.modelContainer{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 3vmin;
+    width: 30%;
+    height: 80%;
+    background-color: white;
+}
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 15px;
+    border-bottom: 1px solid black ;
+}
+.back{
+    height: 40px;
+    display: flex;
+    position: absolute;
+    width: 40px;
+    font-size: 30px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    right: 15px;
+   
+    background-color: rgba(0,0,0,0.1);
+}
+
+.username{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vmax;
+    align-items: center;
+    padding-left: 2vmax;
+
+}
+.hostname_section{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vmax;
+}
+
+.hostnameinput{
+    height: 40px;
+    width: 40%;
+    border: 0.5px solid rgba(0,0,0,0.4);
+    
+}
+.invitype{
+    height: 40px;
+}
+.username div{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+}
+.username div img{
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.username section span{
+    font-size: 0.875rem;
+
+}
+.form-body{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 3vmin;
+    width: 100%;
+}
+.market-form{
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4vmin;
+
+}
+.market-form .forms .datesection{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vmax;
+    width: 100%;
+
+}
+.market-form .forms .datesection div{
+    width: 45%;
+
+}
+.event_input{
+    width: 100%;
+    height: 40px;
+    border: 0.5px solid rgba(0,0,0,0.4);
+}
+.datesection input{
+    border: 0.5px solid rgba(0,0,0,0.4);
+    height: 40px;
+ 
+
+}
+.description_input{
+    height: 40px;
+    width: 100%;
+    border: 0.5px solid rgba(0,0,0,0.4);
+
+}
+
+.event-form input{
+    background-color: transparent ;
+    /* width: 100%; */
+
+}
+.market-form .forms{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 4vmin;
+    width: 80%;
+}
+.button_section{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.selectsection{
+    display: flex ;
+    flex-wrap: wrap;
+    gap: 1.5vmax;
+}
+
+
+.button_section button{
+    width: 80%;
+    background-color: #0084FF;
+    color: white;
+    border: none;
+    font-size: 0.875rem;
+    padding: 10px;
+    border-radius: 0.75rem;
+
+}
+.market-form .location-input{
+    width: 100%;
+}
+.market-form .description_input{
+    resize:none;
+    border-radius: 0.4rem;
+    width: 100%;
+}
+
+
+@media (max-width:768px) {
+    .modelContainer{
+        width: 90%;
+        height: 80%;
+
+    }
+    .invitype ,.hostnameinput,.location-input{
+        width: 100%;
+    }
+
+    select{
+        width: 100%;
+        height: 40px;
+    }
+
+    .description_input{
+        height: 100px;
+    }
+    
+    
+}

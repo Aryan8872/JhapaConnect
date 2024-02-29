@@ -1,0 +1,183 @@
+.event-detail-container{
+    display: flex;
+    flex-flow: column wrap;
+}   
+
+.upper-main-image-div{
+    display: flex;
+    width: 100%;
+    height: 30%;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+.upper-main-image-div img{
+    width: 90%;
+    height: 80%;
+    object-fit: cover;
+}
+
+.event-details-body{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 2.2vmin;
+
+}
+.event-details-body-upper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+}
+.event-details-body-upper-buttons{
+    display: flex;
+    height: max-content;
+    flex-wrap: wrap;
+    gap: 1.2vmax;
+    padding-right: 0.8vmax;
+}
+.event-details-body-upper-buttons button{
+    display: flex;
+    align-items: center;
+    border-radius: 0.4rem;
+    border: 0.3px solid #65676B;
+    padding: 0 8px 0 8px;
+}
+
+.basic-details{
+    display: flex;
+    flex-flow: column wrap;
+}
+.options-button{
+    position: relative;
+}
+.event-options{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1vmin;
+    position: absolute;
+    left: 85%;
+    top:52%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2 );
+}
+.edit-event{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    height: 50%;
+    gap: 2vmax;
+    color: white;
+    cursor: pointer;
+}
+.delete-event{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    gap: 1.2vmax;
+    color: white;
+    height: 50%;
+    cursor: pointer;
+
+}
+@media (max-width:1000px) {
+    .event-options{
+        top:48%;
+
+    }
+}
+@media (max-width:1440px) {
+    .event-options{
+        top:52%;
+
+    }
+}
+@media (max-width:1200px) {
+    .event-options{
+        top:48%;
+
+    }
+    
+}
+@media (max-width:768px) {
+    .event-options{
+        top: 47%;
+        left: 48%;
+    }
+    .event-details-body-upper-buttons{
+        padding-left: 12px;
+    }
+
+    .event-details-body-upper-buttons button img{
+        height: 20px;
+        width: 20px;
+    }
+
+
+    .event-details-body-upper-buttons button{
+        height: 30px;
+
+    }
+    
+}
+
+.date{
+    color: #F0284A;
+    font-size: 1rem;
+    padding-left: 20px;
+
+}
+.name{
+    color: #050505;
+    font-size: 1.8rem;
+    padding-left: 20px;
+}
+
+.location{
+    color: #65676B;
+    font-size: 1rem;
+    padding-left: 20px;
+}
+.body_heading{
+    padding-left: 20px;
+
+}
+.event-details-body-lower{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 15px;
+
+}
+.detail-body-div{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 2vmin;
+    width: 50%;
+    background-color: #f0f2f5;
+    border-radius: 0.5rem;
+    padding-top: 9px;
+
+}
+.body-details{
+    display: flex;
+    flex-flow: column wrap;
+    padding-left: 20px;
+    gap: 1.5vmin;
+}
+.body-details-right{
+    display: flex;
+    height: max-content;
+    flex-wrap: wrap;
+    gap: 1vmax;
+    padding-right: 0.8vmax;
+    background-color: #f0f2f5;
+    width: 20%;
+    align-items: center;
+    justify-content: center;
+    height: 20%;   
+    border-radius: 0.5rem;
+
+
+
+}

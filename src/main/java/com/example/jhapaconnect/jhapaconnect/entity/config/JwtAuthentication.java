@@ -27,40 +27,23 @@ import java.io.IOException;
 public class JwtAuthentication extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
+
     @Override
-    protected void doFilterInternal(
-            @NotNull HttpServletRequest request,
-            @NotNull HttpServletResponse response,
-            @NotNull FilterChain filterChain  //its a chain of responsibility design pattern which will contain the list of other filters that we will need
-    ) throws ServletException, IOException {
-        //contains JWT token
-        final String authHeader = request.getHeader("Authorization");    //when a user makes a request we need to pass the jwt authentication token within the header so it should be within a header which is created here and we will extract it.
-        final String jwt;                                                  // the authheader(authenti header) is a part of the request so we can call the method from request of getheader("your name of authentication header")
-        final String userEmail;
-        //token checking process
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String jwt = authHeader.substring(7); // Extract JWT token
+            String userEmail = jwtService.extractUsername(jwt);
 
-        //the token should always start with the keyword bearer and a space which will take 6 space and we should start from pos 7 while extracting token
-        if(authHeader == null || authHeader.startsWith("Bearer ")){
-            filterChain.doFilter(request,response);   //dont continue with the execution of request
-            return;
-        }
-
-        //token extraction
-        jwt=authHeader.substring(7);
-
-
-        // extract from jwt token
-        userEmail = jwtService.extractUsername(jwt);
-        if(userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
-            if(jwtService.isTokenvalid(jwt , userDetails)){
-                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
-                authToken.setDetails( new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authToken);
+            if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
+                if (jwtService.isTokenvalid(jwt, userDetails)) {
+                    UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                    authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(authToken);
+                }
             }
         }
         filterChain.doFilter(request, response);
-
-
     }
 }

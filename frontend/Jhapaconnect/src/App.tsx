@@ -1,59 +1,93 @@
- 
+
 import './index.css'
-import {Routes,Route} from  'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import SigninForm from "../auth/forms/SigninForm.tsx";
-import {AllUsers, CreatePost, Explore, Home, PostDetails, Marketplace, Profile, Eventspage, UpdatePost, UpdateProfile,Login,Register, Additem} from "../root/pages/index.ts";    //the index.ts file makes the export more easier as wen can import other pages within it
+import { AllUsers, Home, Marketplace, Eventspage,  Login, Register, Additem } from "../root/pages/index.ts";    //the index.ts file makes the export more easier as wen can import other pages within it
 import SignupForm from "../auth/forms/SignupForm.tsx";
 import AuthLayout from "../auth/AuthLayout.tsx";
 import RootLayout from "./components/root/RootLayout.tsx";
 import { QueryClient, QueryClientProvider } from 'react-query';
-import Itempreview from './components/itempreview/Itempreview.tsx';
-import Postimageuploader from './components/image uploader/Postimageuploader.tsx';
-import Itemimageuploader from './components/image uploader/ItemImage upload/Itemimageuploader.tsx';
+import Itempreview from './components/Postpreview/Postpreview.tsx';
+
+import { useState } from 'react';
+import { isLoggedin } from "../root/pages/loginauth.tsx"
+import ItemBill from './components/Item bill/ItemBill.tsx';
+import ItemDetail from './components/itempreview/ItemDetail.tsx';
+import Profile from './components/profile/Profile.tsx';
+import Eventpreview from './components/Eventpreview/Eventpreview.tsx';
+import EventTicket from './components/Event ticket/EventTicket.tsx';
+import UserProfile from './components/profile/Userprofile.tsx';
 
 function App() {
 
+
+    console.log(isLoggedin())
     const queryclient = new QueryClient();
 
     return (
         <>
             <main className="main">
-            <QueryClientProvider client={queryclient}>
-                <Routes>
+                <QueryClientProvider client={queryclient}>
 
-                    {/* public routes. they are login signup*/}
-                    <Route element={<AuthLayout/>}>
-                        {/* within authlayout we are placing these 2 pages wrapping them. the pages will change within the same  route*/}
-                        <Route path="/Login" element={<Login/>}/>
-                        <Route path="/register" element={<Register/>}/>
+                    <Routes>
 
-                    </Route>
-
+                        {/* public routes. they are login signup*/}
+                        <Route element={<AuthLayout />}>
+                            {
+                                isLoggedin() === false &&
+                                <Route path="/login" element={<Login />} />
 
 
-                    {/* private routes. they are only accessed after logging in */}
-                    <Route element={<RootLayout/>}>
-                        <Route index element={<Home/>}/>    {/* index means the starting page*/}
-                        <Route path="/explore" element={<Explore/>}/>
-                        <Route path="/Events" element={<Eventspage/>}/>
-                        <Route path="/all-users" element={<AllUsers/>}/>
-                        <Route path="/create-post" element={<CreatePost/>}/>
-                        <Route path="/update-post" element={<UpdatePost/>}/>
-                        <Route path="/market" element={<Marketplace/>}/>
-                        <Route path="/profile" element={<Profile/>}/>
-                        <Route path="/post/:postId" element={<Itempreview/>}/>
-                        <Route path="/post/:postId/image/upload" element={<Postimageuploader/>}/>
-                        <Route path="/item/:itemId/image/upload" element={<Itemimageuploader/>}/>
+                            }
+                            {
+                                !isLoggedin() &&
+                                <Route path="/register" element={<Register />} />
 
-                        <Route path="/update-profile" element={<UpdateProfile/>}/>
-                        <Route path = "/item/:itemId/category/:catId" element={<Itempreview/>}/>
+                            }
 
-                    </Route>
-                    <Route path="/add-item" element={<Additem/>}/>
-                
-                        
+                        </Route>
 
-                </Routes>
+
+
+                        {/* private routes. they are only accessed after logging in */}
+
+                        {isLoggedin() == true &&
+                            <Route element={<RootLayout />}>
+                                <Route index element={<Home />} />    {/* index means the starting page*/}
+                                <Route path="/all-users" element={<AllUsers />} />
+                                <Route path="/post/:postId" element={<Itempreview />} />
+                                <Route path="/user-profile" element={<Profile/>} />
+                                <Route path = "/profile/:Id" element={<UserProfile/>}/>
+                                <Route path="/item/:itemId/category/:catId" element={<Itempreview />} />
+                                <Route path="/add-item" element={<Additem />} />
+                                <Route path="/item-bill/:Id" element={<ItemBill/>}/>
+                                <Route path="/event-ticket/:Id" element={<EventTicket/>}/>
+                            </Route>
+
+                        }
+                        { isLoggedin()==true &&
+                            <Route path="/market" element={<Marketplace />} />
+                        }
+
+
+                        { isLoggedin()==true &&
+                                <Route path="/Events" element={<Eventspage />} />
+                        }
+
+                        { isLoggedin()==true &&
+                                <Route path="/detail/:Id" element={<ItemDetail />} />
+                        }
+
+                        {
+                            isLoggedin()== true &&
+                            <Route path='/event-details/:Id' element={<Eventpreview/>}/>
+                            
+                        }
+
+
+
+
+                    </Routes>
                 </QueryClientProvider>
 
 

@@ -1,0 +1,253 @@
+.item_preview{
+    padding: 10px;
+    background-color: #f0f2f5;
+    width: 100%;
+    height: 100%;
+    z-index:400;
+    
+}
+
+.preview_container{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 1rem;
+    gap: 2vmax;
+    height: 100%;
+
+}
+@media (max-width:768px) {
+    .preview_container{
+        flex-flow: column wrap;
+        gap: 3vmin;
+    }
+    .item_preview{
+        top: 60px;
+    }
+
+    
+}
+.right_upper_container{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1.4vmin;
+    width: 80%;
+}
+.preview_image_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 76%;
+    width: 60%;
+}
+
+.post_head{
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: space-between;
+}
+.post_head section{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1.2rem;
+}
+.preview_image{
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    border: 1px solid black ;
+}
+
+
+.preview_image img{
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+ 
+    object-fit: fill;
+
+}
+
+
+.post_details{
+    display: flex;
+    flex-flow: column wrap;
+    padding-left: 1vmax;
+    gap: 1.2vmin;
+    width: 100%;
+} 
+.right_detail{
+    display: flex;
+    justify-content: space-between;
+    gap: 1.2vmin;
+    width: 35%;
+    word-wrap: break-word;
+}
+.description_section{
+    width: 100%;
+    font-size: 0.875rem;
+}
+.tags{
+    font-size: 0.875rem;
+    width: 100%;
+
+
+}
+.like_section{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2vmax;
+}
+.post_interaction_btn{
+    width: 35px;
+    height: 35px;
+    background: transparent;
+}
+.post_interaction_btn img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.post_preview_form{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1.2vmin;
+
+}
+.post_preview_form input{
+    border: none;
+}
+
+.post_preview_form button{
+    border: none;
+    width: max-content;
+    background-color: inherit;
+}
+
+.right_lower{
+    display: flex;
+    flex-flow: column wrap;
+
+}
+.post_cmts{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    overflow-y: scroll;
+    gap: 1.7vmin;
+    height: 50%;
+}
+.post_cmts::-webkit-scrollbar{
+    display: none;
+}
+.cmt_container{
+    display: flex;
+    gap: 1vmax;
+}
+.cmt_container span{
+    display: flex;
+}
+.user_photo{
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+.user_photo img{
+    height: 100%;
+    width: 100%;
+}
+.comment {
+    display: flex;
+    flex-flow: column wrap;
+    height: auto;
+    overflow: auto;
+    border-radius: 0.5rem;
+    background-color: #f0f2f5;
+}
+.commenter{
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.comment_text {
+    font-size: 0.875rem;
+    max-width: 300px;
+    word-wrap: break-word; /* Allow long words to break and wrap to the next line */
+}
+
+.closebtn{
+    display: flex;
+    flex-wrap: wrap;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.closebtn img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width:768px) {
+ 
+    .preview_image_container{
+        height: 30%;
+        width: 65%;
+        align-self: center;
+    }
+    .post_footer{
+        font-size: 0.875rem;
+    }
+    .right_detail{
+        font-size: 0.785rem;
+    }
+    .right_detail{
+        height:auto;
+        justify-content: center;
+        width: 100%;
+    }
+    .right_lower{
+        gap: 1.8vmin;
+    }
+    .closebtn{
+        width: 20px;
+        height: 20px;
+    }
+    .post_cmts{
+        height:40%;
+        width: 100%;
+    }
+    .right_upper_container{
+        height: auto;
+    }
+    .like_section{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2vmax;
+    }
+    .post_interaction_btn
+    
+    {
+        height: 35px;
+        background:transparent;
+
+      
+        width: 35px;
+    }
+    .post_interaction_btn img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+@media (max-width:620px) {
+
+    
+}
+@media (max-width:480px) {
+
+    
+}

@@ -1,8 +1,13 @@
 package com.example.jhapaconnect.jhapaconnect.entity.auth;
 
 
+import com.example.jhapaconnect.jhapaconnect.entity.config.JwtService;
+import com.example.jhapaconnect.jhapaconnect.entity.entity.UserEntity;
+import com.example.jhapaconnect.jhapaconnect.entity.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,8 +17,9 @@ public class AuthenticationController {
     private final AuthenticationService service;
 
 
-    @PostMapping("/registe")
+    @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request){
+
         return  ResponseEntity.ok(service.register(request));
 
     }
@@ -27,4 +33,6 @@ public class AuthenticationController {
     public ResponseEntity<String> hello(){
         return ResponseEntity.ok("heelo");
     }
+
+
 }

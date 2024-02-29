@@ -36,13 +36,11 @@ public class PostServiceImpl implements PostService {
 
 
     @Override
-    public PostDTO createPost(PostDTO postdto, Integer userId, Integer catId) {
+    public PostDTO createPost(PostDTO postdto, Integer userId) {
         UserEntity user = userrepo.findById(userId).orElseThrow(()-> new NullPointerException("user notfound" + userId));
-        Category category = catrepo.findById(catId).orElseThrow(()->new NullPointerException("category not found" + catId));
         Post post = mapper.map(postdto,Post.class);
         post.setAddedDate(new Date());
         post.setUser(user);
-        post.setCategory(category);
 
         Post newPost = postrepo.save(post);
         return mapper.map(newPost,PostDTO.class );
@@ -85,13 +83,9 @@ public class PostServiceImpl implements PostService {
         return postdto;
     }
 
-    @Override
-    public List<PostDTO> getPostbyCategory(Integer catID) {
-        Category cat = catrepo.findById(catID).orElseThrow(()-> new NullPointerException("category" + catID + "doesnot have any posts"));
-        List<Post> posts =postrepo.findByCategory(cat);
-        List<PostDTO> postdtos = posts.stream().map((post->mapper.map(post,PostDTO.class))).collect(Collectors.toList());
-        return  postdtos;
-    }
+
+
+
 
     @Override
     public List<PostDTO> getPostbyUser(Integer userId) {
@@ -119,8 +113,6 @@ public class PostServiceImpl implements PostService {
         post.setImageName(postdto.getImageName());
         Post updatedPost = postrepo.save(post);
         return mapper.map(updatedPost,PostDTO.class);
-
-
 
     }
 
@@ -152,4 +144,5 @@ public class PostServiceImpl implements PostService {
 
         return  name ; //return file name
     }
+
 }
