@@ -1,0 +1,147 @@
+.admin_container{
+    display: flex;
+    flex-flow: row wrap;
+    padding-top: 20px;
+    margin-left:250px ;
+    position: absolute;
+    top: 55px;
+    width: 80%;
+
+}
+
+.admin-title{
+
+}
+.admin_body{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 6vmax;
+}
+.admin-category{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    width: 380px;
+    background-color: #ecf6ff;
+    gap: 2vmax;
+}
+.item-cat-title{
+    display: flex;
+}
+.category-admin-form{
+    display: flex;
+    
+    width: 100%;
+}
+.category-admin-form form{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;    
+    gap: 20px;
+    width:100% ;
+}
+.category-admin-form form input{
+    height: 40px;
+    border-radius: 0.8rem;
+    border: 0.5px solid;
+
+}
+.category-admin-form form button{
+    height: 100%;
+    background-color: limegreen;
+    color: white;
+    width: 20%;
+    border: 0.3px solid;
+    border-radius: 0.4rem;
+
+}
+.admin-event_category{
+    background-color: #f6f5fd;
+    display: flex;
+    flex-flow: column wrap;
+    gap: 2vmax;
+    width: 380px;
+    align-items: center;
+}
+.event-category-admin-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+.event-category-admin-form form{
+    display: flex;
+    flex-flow:  row wrap;  
+    width: 100%; 
+    justify-content: center;
+    gap: 2vmax;
+
+}.event-category-admin-form form input{
+    height: 40px;
+    border-radius:0.8rem ;
+    border: 0.5px solid;
+}
+.event-category-admin-form form button{
+
+    background-color: limegreen;
+    color: white;
+    width: 20%;
+    border: 0.3px solid;
+    border-radius: 0.4rem;
+}
+.all-category{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1.2vmin;
+    align-items: center;
+    width: 100%;
+}
+.all-event-category{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1.2vmin;
+    align-items: center;
+    width: 100%;
+}
+.icat{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    
+}
+.icat-name{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+}
+
+.ecat{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.ecat-name{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+}
+.deli-btn{
+    background-color: red;
+    color: white;
+    border: 0.3px solid;
+    border-radius: 0.5rem;
+    width: 20%;
+
+}
+.dele-btn{
+    background-color: red;
+    color: white;
+    border: 0.3px solid;
+    width: 20%;
+    border-radius: 0.5rem;
+
+
+}

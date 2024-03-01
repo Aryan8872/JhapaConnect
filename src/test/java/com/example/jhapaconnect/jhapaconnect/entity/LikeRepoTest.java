@@ -41,8 +41,6 @@ public class LikeRepoTest {
 
         Likes savedLike = likeRepository.save(like);
 
-
-
         Assertions.assertThat(savedLike.getLikeId()).isGreaterThan(0);
     }
 

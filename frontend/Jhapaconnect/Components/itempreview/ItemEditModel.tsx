@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useMutation } from 'react-query'
 import { authToken } from '../../root/pages/loginauth'
 import { ZodType, z } from 'zod'
+import { Bounce, toast } from 'react-toastify'
 
 const ItemEditModel = ({onClose,itemId , show}) => {
 
@@ -109,10 +110,32 @@ const ItemEditModel = ({onClose,itemId , show}) => {
     
             console.log('Image uploaded:', responseImage);
             console.log('Post details updated:', responsePostDetails);
+            toast.success('🦄 Item edited sucessfully!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+                });
     
             onClose;
         } catch (error) {
             console.error('Error updating post:', error);
+            toast.error('🦄 Error updating try again!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+                });
         }
     };
     
@@ -122,7 +145,7 @@ const ItemEditModel = ({onClose,itemId , show}) => {
                 <div className='upper'>
                     <div className='top'>
 
-                        List item
+                        Edit item
                         <div className='back' onClick={()=>{onClose()}}>
                             x
 
@@ -138,7 +161,7 @@ const ItemEditModel = ({onClose,itemId , show}) => {
                 <div className='form-body'>
                     <section className='username'>
                         <div>
-                            <img src="" />
+                            <img src="/assets/icons/profileuser.png" />
                         </div>
                         <section>
                             <span>{firstName} {lastName}</span>

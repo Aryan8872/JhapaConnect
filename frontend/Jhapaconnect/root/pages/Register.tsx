@@ -20,8 +20,8 @@ const Register = () => {
     }
 
     const schema:ZodType<FormData> = z.object({
-        firstName:z.string().min(3,{message:"Firstname is not suitable"}),
-        lastName:z.string().min(4,{message:"Lastname is not valid"}),
+        firstName:z.string().min(1,{message:"Firstname is not suitable"}),
+        lastName:z.string().min(2,{message:"Lastname is not valid"}),
         email:z.string().email({message:"Invalid email address"}),
         phoneNo:z.string().min(10),
         password:z.string().min(5,{message:"Password must be more than 5 characters"}).max(20)
@@ -64,20 +64,36 @@ const Register = () => {
 
 
     const createUser=(data:FormData)=>{
-        saveData.mutate(data);
-        console.log(data);
+        if(!data.email || !data.firstName || !data.lastName || !data.email ||!data.phoneNo ){
+            toast.error("Please fill in all the fields", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+            })  }
+        else{
+
+        
+        saveData.mutate(data)
+        console.log(data)
+        }
     }
+    
 
   return (
     <div className="register">
     <div className="register-card">
         <div className="register-left">
             <div className='register-left-text'>
-                <h1>Lama Social.</h1>
+                <h1>People connect</h1>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero cum,
-                    alias totam numquam ipsa exercitationem dignissimos, error nam,
-                    consequatur.
+                Join the Community
+                 Register with People Connect Today and Connect with Your Neighbors!
                 </p>
                 <span>Do you have an account?</span>
                 <Link to="/Login">
@@ -91,78 +107,15 @@ const Register = () => {
             <h1>Register</h1>
             <form onSubmit={handleSubmit(createUser)}>
                 <input type="text" placeholder="Firstname" {...register("firstName")}/>
-                {errors.firstName &&   
-                toast.error(errors.firstName.message, {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                transition: Bounce,
-                }) }
+             
                 <input type="text" placeholder="Lastname" {...register("lastName")} />
-                {
-                    errors.lastName && 
-                    toast.error(errors.lastName.message, {
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                        transition: Bounce,
-                        })
-                }
+                
                 <input type="email" placeholder="Email" {...register("email")} />
-                {
-                    errors.email &&
-                    toast.error(errors.email.message, {
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                        transition: Bounce,
-                        })
-                }
+               
                 <input type="text" placeholder="Phone no" {...register("phoneNo")} />
-                {
-                    errors.phoneNo &&
-                    toast.error(errors.phoneNo.message, {
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                        transition: Bounce,
-                        })
-                }
+              
                 <input type="password" placeholder="Password" {...register("password")} />
-                {
-                    errors.password && 
-                    toast.error(errors.password.message, {
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                        transition: Bounce,
-                        })
-                }
+           
               
                 <button type={'submit'}>Register</button>
             </form>

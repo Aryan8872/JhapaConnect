@@ -17,13 +17,10 @@ const MarketModel = ({ open, onClose, categories }) => {
 
     const localStorageData = localStorage.getItem('data');
 
-    // Step 2: Parse the JSON string into a JavaScript object   
     const parsedData = JSON.parse(localStorageData);
 
-    // Step 3: Extract the user data from the parsed object
     const userData = parsedData.data.user;
 
-    // Now you can access individual properties of the user data
     const userId = userData.id;
     const firstName = userData.firstName;
     const lastName = userData.lastName;
@@ -90,7 +87,7 @@ const MarketModel = ({ open, onClose, categories }) => {
               const formData = new FormData();
               formData.append('image', selectedImage);
     
-              const responseImage = await axios.post(`http://localhost:8080/api/v1/auth/item/image/upload/${itemId}`, formData, {
+              const responseImage = await axios.post(`http://localhost:8080/api/v1/auth/item/image/upload/${itemId}/${catId}`, formData, {
                 headers: {
                   'Content-Type': 'multipart/form-data',
                 },
@@ -172,6 +169,8 @@ const MarketModel = ({ open, onClose, categories }) => {
       setSelectedImage(event.target.files[0]);
   };
 
+ 
+
   
 
   
@@ -197,7 +196,7 @@ const MarketModel = ({ open, onClose, categories }) => {
                 <div className='form-body'>
                     <section className='username'>
                         <div>
-                            <img src="" />
+                            <img src="/assets/icons/profileuser.png" />
                         </div>
                         <section>
                             <span>{firstName} {lastName}</span>
@@ -207,7 +206,7 @@ const MarketModel = ({ open, onClose, categories }) => {
 
                     <form className='market-form' onSubmit={handleSubmit(createItem)} encType='multipart/form-data'>
                         <section className='forms'>
-                            <input placeholder='Event name' className='event_input' {...register("title")} />
+                            <input placeholder='Item name' style={{textAlign:"center"}} className='event_input' {...register("title")} />
 
                             <section className='datesection'>
                                 <div style={{ display: "flex", flexFlow: "column wrap" }}>
@@ -222,7 +221,7 @@ const MarketModel = ({ open, onClose, categories }) => {
 
                                 </div>
 
-                                <div style={{ display: "flex", flexFlow: "column wrap" }}>
+                                <div style={{ display: "flex", flexFlow: "column wrap" , textAlign:"center"}}>
                                     <span>Price</span>
                                     <input placeholder='Price' style={{ width: "100%" }} {...register("price")} />
                                  
@@ -231,7 +230,7 @@ const MarketModel = ({ open, onClose, categories }) => {
                                 </div>
                             </section>
 
-                            <textarea placeholder='Description' className='description_input' {...register("description")} >
+                            <textarea placeholder='Description' style={{textAlign:"center"}} className='description_input' {...register("description")} >
                             </textarea>
 
                             <input placeholder='Location' className='location-input' {...register("location")} />

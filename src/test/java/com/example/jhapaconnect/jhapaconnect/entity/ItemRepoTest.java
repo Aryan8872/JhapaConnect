@@ -49,8 +49,6 @@ public class ItemRepoTest {
         category.setCategoryTitle("category");
         categoryRepository.save(category);
 
-
-
         Item item = new Item();
         item.setId(1);
         item.setLocation("testloc");

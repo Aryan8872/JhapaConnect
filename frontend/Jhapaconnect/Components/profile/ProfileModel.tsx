@@ -7,6 +7,7 @@ import { authToken } from '../../root/pages/loginauth';
 import { ZodType, z } from 'zod';
 import "./profilemodel.css"
 import axios from 'axios';
+import { Bounce, toast } from 'react-toastify';
 
 const ProfileModel = ({open,onClose}) => {
     if (!open) {
@@ -56,7 +57,7 @@ const ProfileModel = ({open,onClose}) => {
         mutationFn: async (data: userData) => {
             if(localStorage.getItem("jwtToken")){
                 authToken(localStorage.getItem("jwtToken"))
-                 await axios.post(`http://localhost:8080/api/v1/auth/user/${userId}/update`, data).then(
+                 await axios.post(`http://localhost:8080/api/v1/auth/${userId}/update`, data).then(
                 response => {
                     console.log(response.data)
                     setFormsubmit(true)
@@ -72,9 +73,34 @@ const ProfileModel = ({open,onClose}) => {
 
 
             }
+            
             ).catch(err => console.log(err))
 
         }
+    },onSuccess:()=>{
+        toast.success('✅ Edited sucessfully!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+          });
+    },onError:()=>{
+        toast.error('Error while editing!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+          });
     }
     })
 
@@ -107,7 +133,7 @@ const ProfileModel = ({open,onClose}) => {
 
                     <section className='username'>
                         <div>
-                            <img src="" />
+                            <img src="/assets/icons/profileuser.png" />
                         </div>
                         <section>
                             <span>{firstName} {lastName}</span>

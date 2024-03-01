@@ -12,6 +12,15 @@ const Leftbar = () => {
         navigate("/login")
         window.location.reload();
     }
+    const localStorageData = localStorage.getItem('data');
+
+    const parsedData = JSON.parse(localStorageData);
+
+    const userData = parsedData.data.user;
+
+    const userId = userData.id;
+    const firstName = userData.firstName;
+    const lastName = userData.lastName;
 
     
 
@@ -25,7 +34,7 @@ const Leftbar = () => {
                                 src=""
                                 alt="user image"
                             />
-                            <span>Aryan</span>
+                            <span>{firstName} {lastName}</span>
                         </div>
                         {sidebarLinks.map((link, key) => (
                             <Link to={link.route} key={key} style={{ textDecoration: "none", color: "black" }}  >
@@ -45,10 +54,7 @@ const Leftbar = () => {
                     <hr />
                     <div className="left-bar-menu">
                         <span>Your shortcuts</span>
-                        <div className="left-bar-item">
-                            <img src="/assets/icons/darktheme.png" alt="events icon" />
-                            <span>Dark mode</span>
-                        </div>
+                       
 
                         <div className="left-bar-item" onClick={()=>{Logout()}}>
                             <img src="/assets/icons/logout.png" alt="events icon" />

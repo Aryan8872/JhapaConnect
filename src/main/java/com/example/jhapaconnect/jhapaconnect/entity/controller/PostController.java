@@ -1,7 +1,9 @@
 package com.example.jhapaconnect.jhapaconnect.entity.controller;
 
 import com.example.jhapaconnect.jhapaconnect.entity.dto.PostDTO;
+import com.example.jhapaconnect.jhapaconnect.entity.entity.Likes;
 import com.example.jhapaconnect.jhapaconnect.entity.entity.Post;
+import com.example.jhapaconnect.jhapaconnect.entity.repository.LikeRepository;
 import com.example.jhapaconnect.jhapaconnect.entity.service.Fileservice;
 import com.example.jhapaconnect.jhapaconnect.entity.service.PostService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -32,6 +34,7 @@ import java.util.List;
 public class PostController {
     private final PostService service;
     private final Fileservice fileService;
+    private final LikeRepository likerepo;
 
     @Value("/images")
     private String path;
@@ -77,9 +80,11 @@ public class PostController {
 
 
     @DeleteMapping("/post/delete/{id}")
-    public ResponseEntity <String> deltePost(@RequestParam("id") Integer id){
-        service.deletePost(id);
-        return  ResponseEntity.ok("sucessfully  deleted");
+    public ResponseEntity <String> deltePost(@PathVariable ("id") Integer id){
+            Likes like = likerepo.findLikesByPostId(id);
+            likerepo.delete(like);
+            service.deletePost(id);
+            return  ResponseEntity.ok("sucessfully  deleted");
     }
 
 

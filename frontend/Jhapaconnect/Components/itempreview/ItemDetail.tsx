@@ -10,6 +10,17 @@ import { Bounce, toast } from 'react-toastify';
         if(!showDetail){
             return 
         }
+        const localStorageData = localStorage.getItem('data');
+
+        const parsedData = JSON.parse(localStorageData);
+      
+        const userData = parsedData.data.user;
+      
+        const userId = userData.id;
+        const firstname = userData.firstName;
+        const lastname = userData.lastName;
+        const email = userData.email;
+        const phoneNo = userData.phoneNo;
 
         const { addedDate, category, description,id, imageName, location, price, title,user } = props
         const {firstName,lastName} = user
@@ -56,7 +67,7 @@ import { Bounce, toast } from 'react-toastify';
             await axios.delete(`http://localhost:8080/api/v1/auth/item/delete/${id}`).then((res)=>{
             
                   window.location.reload()
-                  toast.error(' Please fill all the fields!', {
+                  toast.error(' Item delete sucessfully!', {
                     position: "top-center",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -70,6 +81,7 @@ import { Bounce, toast } from 'react-toastify';
                   });
             })
         }
+     
       
     return (
         <>
@@ -98,9 +110,12 @@ import { Bounce, toast } from 'react-toastify';
 
                             <span style={{ fontSize: "12px", color: "#737373" }}>{addedDate}</span>
 
+                            { firstName === firstname && lastName === lastname &&
+
                             <div className='item-options-btn' onClick={()=>{!showOptions ? setShowoptions(true) :setShowoptions(false)}}>
                                 <img src='/assets/icons/options.png' width={30} height={30}/>
                             </div>
+    }
                             {showOptions &&
                             (<div className='item-options'>
                                 <div className='edit-item' onClick={()=>{setShowEdit(true)}}>
@@ -116,6 +131,7 @@ import { Bounce, toast } from 'react-toastify';
                             </div>)
                             
                             }
+                        
                   
 
                         </div>
@@ -137,8 +153,12 @@ import { Bounce, toast } from 'react-toastify';
                         <div className='description_section'>
                             {description}
                         </div>
-                        <div className='right_lower'>      
-                        <button onClick={()=>{navigate(`/item-bill/${id}`)}}>Buy</button>               
+                        <div className='right_lower' >      
+                        <button style={{color:"#086FFF" , backgroundColor:"white" , border:"0.3px solid black", borderRadius:"0.3rem", display:"flex" , flexFlow:"row wrap", alignItems:"center", justifyContent:"center"}} onClick={()=>{navigate(`/item-bill/${id}`)}}>
+                            <img src= "/assets/icons/buy.png"  width={20} height={20}/>
+                            Buy
+                            
+                        </button>               
                         </div>
                     </div>
                     <hr />

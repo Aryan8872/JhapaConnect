@@ -17,6 +17,7 @@ const EventpreviewModel = ({ open, onClose, eventId }) => {
   const [categoryId, setCategoryid] = useState()
   const [eventdata, setEventdata] = useState([])
   const [categories, setCategories] = useState([])
+  
   const [selectedImage, setSelectedImage] = useState(null);
 
   const navigate = useNavigate();

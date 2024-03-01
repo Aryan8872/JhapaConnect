@@ -54,6 +54,9 @@
     align-items: center;
     width: 15%;
   }
+  .logout-nav{
+    display: none;
+  }
 
   
 
@@ -97,6 +100,12 @@
   @media (max-width:768px) {
     .navbar-container .navbar-middle{
       display: none;
+    }
+    .logout-nav{
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: center;
     }
     
   }

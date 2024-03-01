@@ -8,7 +8,9 @@ import axios from 'axios'
 import EventpreviewModel from './EventpreviewModel'
 import Bottombar from '../BottomBar/Bottombar'
 import { Bounce, toast } from 'react-toastify'
+import { image } from 'html2canvas/dist/types/css/types/image'
 const Eventpreview = () => {
+
     const [eventImage,setEventimage] = useState();
     const [loading,setLoading] = useState(true);
     const [eventdata,setEventdata] = useState([]);
@@ -18,18 +20,29 @@ const Eventpreview = () => {
     const[editModal,setEditModal] = useState(false);
     const[Interest,setInterest] = useState(false);
     const[Going,setGoing] = useState(false);
+    const[startdate,setStartdate] = useState();
+    const [ enddate,setEnddate]  = useState();
     const navigate =useNavigate();
+    
 
     const Id = useParams();
     const eventId = Id.Id;
     const {addedDate,category,description,endDate,going,hostName,id,imageName,interested,invitationType,location,startDate,title,user}= eventdata
     const localStorageData = localStorage.getItem('data');
+
     const parsedData = JSON.parse(localStorageData);
+
     const userData = parsedData.data.user;
+
     const userId = userData.id;
+    const firstName = userData.firstName;
+    const lastName = userData.lastName;
+    const email = userData.email;
+    const phoneNo = userData.phoneNo;
 
     useEffect(()=>{
         getEventdata()
+
     },[eventId])
   
     const getEventdata = async ()=>{
@@ -39,6 +52,8 @@ const Eventpreview = () => {
               const response = await axios.get(`http://localhost:8080/api/v1/auth/event/${eventId}`).then((res)=>{
                 setEventdata(res.data)
                 console.log(res.data)
+                setStartdate(new Date(res.data.startDate).toLocaleDateString());  //we cannot directly render Date type in react so we need to connvert it 
+                setEnddate(new Date(res.data.endDate).toLocaleDateString());
               })
             
             
@@ -193,6 +208,22 @@ const showEdit = ()=>{
   if(loading){
     return <div>loading</div>
   }
+  const deleteEvent =async ()=>{
+
+    axios.delete(`http://localhost:8080/api/v1/auth/event/delete/${id}`).then(()=>{
+        toast.success('✅ Deleted sucessfully!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+          });
+    })
+  }
 
 
   return (
@@ -207,22 +238,23 @@ const showEdit = ()=>{
         <div className='event-details-body'>
             <div className='event-details-body-upper'>
                 <div className='basic-details'>
-                    <span className='date'>{startDate} </span>
+                    <span className='date'>{startdate} </span>
                     <span className='name'>{title}</span>
                     <span className='location'>{location}</span>
                 </div>
                 <div className='event-details-body-upper-buttons'>
-                    <button onClick={()=>{handleInterest(id)}}>
+                    <button onClick={()=>{submitInterest(id)}}>
                         <img src="/assets/icons/interested.png" height={30} width={30}/>
                          Interested 
                     </button>
-                    <button onClick={()=>{handleGoing(id)}}>
+                    <button onClick={()=>{submitGoing(id)}}>
                         <img src="/assets/icons/going.png" height={30} width={30}/>
 
                         Going
                     </button>
-
+                    { user.firstName === firstName && user.lastName === lastName &&
                     <button className='options-button' onClick={()=>{!options ? showOptions(true) :showOptions(false)}}>...</button>
+                    }
                     {options &&
                     (<div className='event-options'>
                         <div className='edit-event' onClick={()=>{setEditModal(true)}}>
@@ -230,7 +262,7 @@ const showEdit = ()=>{
                             Edit
                         </div>
                         <hr/>
-                        <div className='delete-event'>
+                        <div className='delete-event' onClick={(()=>{deleteEvent()})}>
 
                             <img src="/assets/icons/delete.png" height={30} width={30}/>
                             Delete

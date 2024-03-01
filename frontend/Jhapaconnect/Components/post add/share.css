@@ -75,6 +75,14 @@
     background-color: #5271ff;
     border-radius: 3px;
   }
+  .post-sharing-right input[type="submit"]{
+    color: #086FFF;
+    background-color:white ;
+    border: 0.5px solid;
+    padding: 0 5px 0 5px;
+    border-radius: 0.3rem;
+    cursor: pointer;
+  }
 
   .tags_input{
     height: 35px;

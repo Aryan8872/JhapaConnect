@@ -84,7 +84,7 @@ const EventModal = ({ open, onClose,categories }) => {
           const formData = new FormData();
           formData.append('image', selectedImage);
 
-          const responseImage = await axios.post(`http://localhost:8080/api/v1/auth/event/image/upload/${eventId}`, formData, {
+          const responseImage = await axios.post(`http://localhost:8080/api/v1/auth/event/image/upload/${eventId}/${categoryId}`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },
@@ -180,10 +180,10 @@ const handleFileChange = (event) => {
         <div className='form-body'>
           <section className='username'>
             <div>
-              <img src="" />
+              <img src="/assets/icons/profileuser.png" />
             </div>
             <section>
-              <span>hari shrestha</span>
+              <span>{firstName} {lastName}</span>
             </section>
 
           </section>

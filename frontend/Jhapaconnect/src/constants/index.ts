@@ -1,3 +1,5 @@
+
+
 export const sidebarLinks = [
     {
       imgURL: "/assets/icons/home.png",
@@ -38,4 +40,10 @@ export const sidebarLinks = [
       route: "/Events",
       label: "Events",
     },
+    {
+      imgURL:"/assets/icons/person.png",
+      route:"/user-profile",
+      label:"Profile"
+    },
+    
   ];

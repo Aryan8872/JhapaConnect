@@ -13,6 +13,8 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/auth/eventcategories")
+@CrossOrigin(origins =  "http://localhost:5173")
+
 public class EventCategoryController {
 
     private final EventcatService service;
@@ -28,7 +30,7 @@ public class EventCategoryController {
         return  new ResponseEntity<EventCatDTO>(newcat, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{catID}")
+    @DeleteMapping("/delete/{catID}")
     public ResponseEntity<String> deleteCategory(@PathVariable Integer catID){
         service.deleteCategory(catID);
         return  new ResponseEntity<String>("deleted", HttpStatus.OK);

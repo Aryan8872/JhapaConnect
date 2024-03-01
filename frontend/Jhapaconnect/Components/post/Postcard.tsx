@@ -168,6 +168,38 @@ const Postcard = ({ props,key }) => {
         getPostImage();
     }, []); // Empty dependency array to run the effect only once
 
+    const deletePost = async ()=>{
+        try{
+        axios.delete(`http://localhost:8080/api/v1/auth/post/delete/${id}`).then(()=>{
+            toast.success('✅ Post deleted sucessfully!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+              });
+
+        })
+    }
+    catch(error){
+        toast.error('Error deleting post!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+          });
+    }
+
+    }
   
 
 
@@ -214,7 +246,7 @@ const Postcard = ({ props,key }) => {
                                 Edit post
                                 </span>
                             <hr/>
-                            <span className='delete_post' >
+                            <span className='delete_post' onClick={()=>{deletePost()}} >
                                 <img src='assets/icons/delete.png' width={25} height={25}/>
                                 Delete post
                             </span>

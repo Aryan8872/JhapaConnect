@@ -3,6 +3,11 @@ import "./navbar.css";
 import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const Logout = ()=>{
+      localStorage.clear()
+      navigate("/login")
+      window.location.reload();
+  }
 
   const localStorageData = localStorage.getItem('data');
 
@@ -57,6 +62,8 @@ const Navbar = () => {
           </Link>
         </div>
 
+     
+
 
 
       </div>
@@ -67,6 +74,16 @@ const Navbar = () => {
           <span>{firstName} {lastName}</span>
         </div>
       </div>
+      <div className='logout-nav' onClick={()=>{
+        Logout()
+
+      }}>
+          <div>
+            <img src='/assets/icons/logout.png' width={20} height={20}/>
+            <span>Logout</span>
+          </div>
+
+        </div>
     </div>
 
   )

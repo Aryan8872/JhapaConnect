@@ -12,6 +12,8 @@ const EventTicket = () => {
     const id =eid.Id;
     const localStorageData = localStorage.getItem('data');
     const parsedData = JSON.parse(localStorageData);
+    const[startdate,setStartdate] = useState();
+    const [ enddate,setEnddate]  = useState();
     const userData = parsedData.data.user;
     const userId = userData.id;
     const firstName = userData.firstName;
@@ -29,6 +31,8 @@ const EventTicket = () => {
           const data = await axios.get(`http://localhost:8080/api/v1/auth/event/${id}`).then((res) => {
             setEventdata(res.data)
             console.log(res.data)
+            setStartdate(new Date(res.data.startDate).toLocaleDateString());  //we cannot directly render Date type in react so we need to connvert it 
+            setEnddate(new Date(res.data.endDate).toLocaleDateString());
           })
         }
     
@@ -79,6 +83,7 @@ const EventTicket = () => {
                 <div className='id-section'>
                     <div>
                         <div>Ticket ID</div>
+                        <div>{eventdata.id}</div>
                     </div>
 
                     <div className='ticket-eventname'>
@@ -90,7 +95,7 @@ const EventTicket = () => {
                 <div className='ticket-section'>
                     <div className='ticket-eventdate'>
                         <span>Date</span>
-                        <span className='date'>{eventdata.startDate}- {eventdata.endDate}</span>
+                        <span className='date'>{startdate}- {enddate}</span>
                     </div>
 
                     <div className='ticket-eventlocation'>

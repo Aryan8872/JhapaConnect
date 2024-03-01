@@ -16,9 +16,22 @@ import ItemDetail from '../Components/itempreview/ItemDetail.tsx';
 import Profile from '../Components/profile/profile.tsx';
 import Eventpreview from '../Components/Eventpreview/Eventpreview.tsx';
 import EventTicket from '../Components/Event ticket/EventTicket.tsx';
-import UserProfile from '../Components/profile/UserProfile.tsx'
+import UserProfile from '../Components/profile/UserProfile.tsx' 
+import Admin from '../Components/Admin/Admin.tsx';
 
 function App() {
+
+
+    const localStorageData = localStorage?.getItem('data');
+
+    const parsedData = localStorageData ?JSON.parse(localStorageData) :null;
+
+    const userData = parsedData && parsedData.data.user;
+
+    const userId = parsedData && userData.id;
+    const firstName = parsedData &&  userData.firstName;
+    const lastName = parsedData &&  userData.lastName;
+    const email = parsedData && userData.email;
 
 
     console.log(isLoggedin())
@@ -81,6 +94,10 @@ function App() {
                             isLoggedin()== true &&
                             <Route path='/event-details/:Id' element={<Eventpreview/>}/>
                             
+                        }
+                        {
+                            isLoggedin() == true && firstName === "admin" && lastName === "admin" && email === "admin@gmail.com" &&
+                            <Route path="/admin" element = {<Admin/>}/>
                         }
 
 

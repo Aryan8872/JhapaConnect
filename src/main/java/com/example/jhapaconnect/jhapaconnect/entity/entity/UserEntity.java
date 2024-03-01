@@ -46,16 +46,7 @@ public class UserEntity implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL , fetch = FetchType.LAZY)   //mapped by user colum of post
     private List<Post>  posts = new ArrayList<>();
 
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(name = "users_roles",
-//            foreignKey = @ForeignKey(name = "FK_users_roles_userId"),
-//            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-//            inverseForeignKey = @ForeignKey(name = "FK_users_roles_roleId"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"),
-//            uniqueConstraints = @UniqueConstraint(name = "UNIQUE_users_roles_userIdRoleId",
-//                    columnNames = {"user_id", "role_id"})
-//    )
-//    private Collection<Role> roles;
+
 
 
 

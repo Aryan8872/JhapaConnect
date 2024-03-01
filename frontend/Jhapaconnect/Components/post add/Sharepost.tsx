@@ -69,6 +69,7 @@ const Sharepost = () => {
 
           console.log('Image uploaded:', responseImage);
         }
+        window.location.reload()
         toast.success('🦄 Post created sucessfully!', {
           position: "top-center",
           autoClose: 5000,
@@ -91,7 +92,7 @@ const Sharepost = () => {
   const createPost = (data: PostData) => {
     console.log(data)
     if (!data.tags || !data.description || !data.location) {
-      toast.error('🦄 Wow so easy!', {
+      toast.error('🦄 Please fill all the fields', {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -120,7 +121,7 @@ const Sharepost = () => {
           <form onSubmit={handleSubmit(createPost)}    encType='multipart/form-data' >
             <div className="post-sharing-top">
               <img
-                src=""
+                src="/assets/icons/connect.png"
                 alt="profilepic"
               />
               <input type="text" placeholder={`What's on your mind aryan`} {...register("description")} />

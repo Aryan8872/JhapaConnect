@@ -43,6 +43,18 @@ const Login = () => {
 
                 }
             )
+            },onError:()=>{
+                toast.error('🦄 Invalid details!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                    });        
             }
 
         }
@@ -60,11 +72,9 @@ const Login = () => {
             <div className="login-card">
                 <div className="login-left">
                     <div className='login-left-text'>
-                    <h1>Hello World.</h1>
+                    <h1>People Connect</h1>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero cum,
-                        alias totam numquam ipsa exercitationem dignissimos, error nam,
-                        consequatur.
+                    Where Communities Thrive: People Connect, Your Digital Hub for Local Engagement!
                     </p>
                     <span>Don't you have an account?</span>
                     <Link to="/register">
@@ -75,6 +85,11 @@ const Login = () => {
                   
                 </div>
                 <div className="login-right">
+                    <div className='mobile-login-top'>
+                        <img src="/assets/icons/connect.png" width={40} height={40}/>
+                        <span>People connect</span>
+
+                    </div>
                     <h1>Login</h1>
                     <form onSubmit={handleSubmit(authenticate)}>
                         <input type="text" placeholder="Email" {...register("email")}/>

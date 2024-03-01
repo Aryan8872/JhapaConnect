@@ -12,6 +12,8 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/auth/categories")
+@CrossOrigin(origins =  "http://localhost:5173")
+
 public class CategoryController {
     private final CategoryService service;
 
@@ -20,20 +22,20 @@ public class CategoryController {
         CategoryDTO newcat = service.createCategory(dto);
         return  new ResponseEntity<CategoryDTO>(newcat, HttpStatus.CREATED);
     }
-    @PutMapping("/{catID}")
+    @PutMapping("/update/{catID}")
     public ResponseEntity<CategoryDTO> updateCategory(@RequestBody CategoryDTO dto ,@PathVariable Integer catID){
         CategoryDTO newcat = service.updateCategory(dto,catID);
         return  new ResponseEntity<CategoryDTO>(newcat, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{catID}")
+    @DeleteMapping("/delete/{catID}")
     public ResponseEntity<String> deleteCategory(@PathVariable Integer catID){
         service.deleteCategory(catID);
         return  new ResponseEntity<String>("deleted", HttpStatus.OK);
 
     }
 
-    @GetMapping("/{catID}")
+    @GetMapping("/get/{catID}")
     public ResponseEntity<CategoryDTO> getCategory(@PathVariable Integer catID){
         CategoryDTO getCat = service.getCategory(catID);
         return new ResponseEntity<CategoryDTO>(getCat, HttpStatus.OK);

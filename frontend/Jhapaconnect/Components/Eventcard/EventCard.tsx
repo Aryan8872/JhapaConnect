@@ -177,7 +177,7 @@ if(loading){
 
       <div style={{ display: "flex", flexFlow: "column wrap" }}>
         <span className='event_date'> {startdate}-{enddate}</span>
-        <span className='event_address'>{location}</span>
+        <span className='event_address'>{title}</span>
       </div>
 
 

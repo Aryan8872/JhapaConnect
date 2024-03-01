@@ -81,7 +81,7 @@ public class EventController {
 
 
     @DeleteMapping("/event/delete/{id}")
-    public ResponseEntity <String> delteEvent(@RequestParam("id") Integer id){
+    public ResponseEntity <String> delteEvent(@PathVariable("id") Integer id){
         service.deleteEvent(id);
         return  ResponseEntity.ok("sucessfully  deleted");
     }
