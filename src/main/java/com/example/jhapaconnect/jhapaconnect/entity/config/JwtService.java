@@ -32,11 +32,13 @@ public class JwtService {
     //token generator
     //extra claims is for passing authority or any information that we want to store in the token
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails){
+        Date expirationDate = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 7);
+
         return  Jwts.builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())  //we want to verify the user using the subject in token which is the username but here we want to verify user using email so username=email
                 .setIssuedAt(new Date(System.currentTimeMillis()))  //set the time for checking expiration
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 *60*24))     //set expiration of token
+                .setExpiration(expirationDate)     //set expiration of token
                 .signWith(getSignInkey(), SignatureAlgorithm.HS256)   // token generating algorithm
                 .compact(); //compact will generate and return the token
     }
@@ -57,7 +59,6 @@ public class JwtService {
 
     private Key getSignInkey() {
         byte [] keyByte = Decoders.BASE64.decode(SECRET_KEY);
-
         return Keys.hmacShaKeyFor(keyByte);
     }
 

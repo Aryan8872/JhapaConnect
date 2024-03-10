@@ -10,6 +10,8 @@
     overflow-y: scroll;
     width: 80%;
     height: 100vh;
+    padding-bottom: 120px;
+    place-items: center;
 }
 /* .events-container::-webkit-scrollbar{
     display: none;

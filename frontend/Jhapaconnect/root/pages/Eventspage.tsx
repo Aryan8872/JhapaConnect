@@ -8,6 +8,7 @@ import Navbar from '../../Components/navbar/Navbar';
 import EventsLeftbar from '../../Components/EventsLeftbar/EventsLeftbar';
 import EventModal from '../../Components/EventsLeftbar/EventModal';
 import Bottombar from '../../Components/BottomBar/Bottombar';
+import { useNavigate } from 'react-router-dom';
 
 
 const Events = () => {
@@ -16,9 +17,10 @@ const Events = () => {
   const [eventcategories, setEventcategories] = useState();
   const [keyword, setKeyword] = useState();
   const [openModel, setOpenmodel] = useState(false);
-
+  const navigate = useNavigate();
 
   useEffect(() => {
+    checkTokenExpiration()
     getEvent();
   }, [])
 
@@ -29,6 +31,29 @@ const Events = () => {
     setOpenmodel(false);
 
   }
+
+  
+  const checkTokenExpiration = () => {
+    const token = localStorage.getItem('jwtToken');
+
+    if (token) {
+        const decodedToken = JSON.parse(atob(token.split('.')[1])); // Decode the token payload
+        const currentTime = Date.now() / 1000; // Current time in seconds
+
+        if (decodedToken.exp < currentTime) {
+            // Token is expired, redirect to the login page
+            navigate('/Login') 
+            // Change '/login' to your login page URL
+            localStorage.clear()
+
+        }
+    } else {
+        // Token not found, redirect to the login page
+        navigate('/Login') 
+        localStorage.clear()
+      
+    }
+};
 
   const getEvent = async () => {
     if (localStorage.getItem("jwtToken")) {

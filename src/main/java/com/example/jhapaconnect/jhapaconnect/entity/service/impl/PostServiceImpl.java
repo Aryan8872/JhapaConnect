@@ -83,10 +83,6 @@ public class PostServiceImpl implements PostService {
         return postdto;
     }
 
-
-
-
-
     @Override
     public List<PostDTO> getPostbyUser(Integer userId) {
         UserEntity user = userrepo.findById(userId).orElseThrow(()-> new NullPointerException("user with" + userId + "doesnot exist"));
@@ -119,6 +115,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public void deletePost(Integer postid) {
        Post post =  postrepo.findById(postid).orElseThrow(()->new NullPointerException());
+        System.out.println(post);
         postrepo.delete(post);
 
     }

@@ -37,6 +37,7 @@ const EventCard = ({props}) => {
       };      
     } catch (error) {
         setLoading(false);
+        setEventimage("/assets/icons/connect.png")
     }
 }
 

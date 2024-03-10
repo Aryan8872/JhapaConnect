@@ -28,7 +28,7 @@ const EventsLeftbar = ({ searchEvents, handleSearch, categories, searchBycat, ge
 
 
             <div className='event-left_links'>
-                <div className='event-links-container' >
+                <div className='event-links-container'  onClick={()=>{getAll()}}>
                     <div className='event_links'>
                         <img src='/assets/icons/browseall.png' />
                     </div>

@@ -23,7 +23,6 @@ import java.util.List;
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 @CrossOrigin(origins =  "http://localhost:5173")
-
 public class ItemController {
     private final Itemservice service;
     private final Fileservice fileService;

@@ -15,6 +15,8 @@ const Sharepost = () => {
   const parsedData = JSON.parse(localStorageData);
   const userData = parsedData.data.user;
   const userId = userData.id;
+  const firstName = userData.firstName;
+
 
   type PostData = {
     tags: string[];
@@ -124,7 +126,7 @@ const Sharepost = () => {
                 src="/assets/icons/connect.png"
                 alt="profilepic"
               />
-              <input type="text" placeholder={`What's on your mind aryan`} {...register("description")} />
+              <input type="text" placeholder={`What's on your mind ${firstName}`} {...register("description")} />
             </div>
             <hr />
             <div className="post-sharing-bottom">

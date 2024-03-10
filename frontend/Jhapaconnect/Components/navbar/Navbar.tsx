@@ -11,13 +11,10 @@ const Navbar = () => {
 
   const localStorageData = localStorage.getItem('data');
 
-  // Step 2: Parse the JSON string into a JavaScript object   
   const parsedData = JSON.parse(localStorageData);
 
-  // Step 3: Extract the user data from the parsed object
   const userData = parsedData.data.user;
 
-  // Now you can access individual properties of the user data
   const userId = userData.id;
   const firstName = userData.firstName;
   const lastName = userData.lastName;

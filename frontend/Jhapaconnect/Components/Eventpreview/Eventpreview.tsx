@@ -23,6 +23,10 @@ const Eventpreview = () => {
     const[startdate,setStartdate] = useState();
     const [ enddate,setEnddate]  = useState();
     const navigate =useNavigate();
+
+    useEffect(()=>{
+      checkTokenExpiration()
+    })
     
 
     const Id = useParams();
@@ -68,6 +72,8 @@ const Eventpreview = () => {
       },[imageName])
 
 
+
+
     const getEventimage= async ()=>{
       try {
         if(localStorage.getItem("jwtToken")){
@@ -82,8 +88,32 @@ const Eventpreview = () => {
         };      
       } catch (error) {
           setLoading(false);
+          setEventimage("/assets/icons/connect.png")
       }
   }
+
+  
+  const checkTokenExpiration = () => {
+    const token = localStorage.getItem('jwtToken');
+
+    if (token) {
+        const decodedToken = JSON.parse(atob(token.split('.')[1])); // Decode the token payload
+        const currentTime = Date.now() / 1000; // Current time in seconds
+
+        if (decodedToken.exp < currentTime) {
+            // Token is expired, redirect to the login page
+            navigate('/Login') 
+            // Change '/login' to your login page URL
+            localStorage.clear()
+
+        }
+    } else {
+        // Token not found, redirect to the login page
+        navigate('/Login') 
+        localStorage.clear()
+      
+    }
+};
   
 
   const handleInterest = async (eventId) => {

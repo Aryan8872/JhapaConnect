@@ -15,7 +15,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
-
+@CrossOrigin(origins =  "http://localhost:5173")
 public class UserController {
     private final UserService userService;
 

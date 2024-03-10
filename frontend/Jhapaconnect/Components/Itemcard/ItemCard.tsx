@@ -31,8 +31,6 @@ const ItemCard = ({ props }) => {
         setImageerror(true);
         return;
       }
-
-      
       const response = await axios.get(`http://localhost:8080/api/v1/auth/item/image/${imageName}`, {
         responseType: 'blob'
       });
@@ -45,6 +43,8 @@ const ItemCard = ({ props }) => {
     } catch (error) {
       // Handle errors
       setImageerror(error.message);
+      SetImage("assets/icons/connect.png")
+      
     }
   }
 

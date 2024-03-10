@@ -31,7 +31,7 @@ const Leftbar = () => {
                     <div className="left-bar-menu">
                         <div className="left-bar-user">
                             <img
-                                src=""
+                                src="/assets/icons/profileuser.png"
                                 alt="user image"
                             />
                             <span>{firstName} {lastName}</span>

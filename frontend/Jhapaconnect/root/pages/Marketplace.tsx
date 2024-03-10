@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import "./pages-css/market.css"
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import ItemCard from '../../Components/Itemcard/ItemCard';
 import { authToken } from './loginauth';
 import Navbar from '../../Components/navbar/Navbar';
 import MarketLeftBar from '../../Components/MarketLeftbar/MarketLeftBar';
 import Bottombar from '../../Components/BottomBar/Bottombar';
+import { Bounce, toast } from 'react-toastify';
 
 const Marketplace = () => {
 
@@ -14,10 +15,37 @@ const Marketplace = () => {
   const [Item, SetItem] = useState();
   const [SearchkeyWord, setSearchKeyword] = useState();
   const [categories,SetCategories] = useState([])
+  console.log(localStorage.getItem("jwtToken"))
+  const navigate = useNavigate();
 
   useEffect(() => {
+    checkTokenExpiration()
     getItems()
   }, [])
+
+
+  
+  const checkTokenExpiration = () => {
+    const token = localStorage.getItem('jwtToken');
+
+    if (token) {
+        const decodedToken = JSON.parse(atob(token.split('.')[1])); // Decode the token payload
+        const currentTime = Date.now() / 1000; // Current time in seconds
+
+        if (decodedToken.exp < currentTime) {
+            // Token is expired, redirect to the login page
+            navigate('/Login') 
+            // Change '/login' to your login page URL
+            localStorage.clear()
+
+        }
+    } else {
+        // Token not found, redirect to the login page
+        navigate('/Login') 
+        localStorage.clear()
+      
+    }
+};
 
   const getItems = async () => {
     if (localStorage.getItem("jwtToken")) {
@@ -54,6 +82,19 @@ const Marketplace = () => {
 
 
   const searchItems = async () => {
+    if(SearchkeyWord == ""){
+      toast.error('Please provide keyword for search operation!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+        });      
+    }
     if (localStorage.getItem("jwtToken")) {
       authToken(localStorage.getItem("jwtToken"))
       if (SearchkeyWord != null) {

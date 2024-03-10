@@ -35,7 +35,8 @@
 }
 .story-text{
     position: absolute;
-    top: 0;
+    top: 50%;
+    left: 35%;
     color: white;
 }
 .story_image{

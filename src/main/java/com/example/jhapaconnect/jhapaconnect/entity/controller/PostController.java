@@ -29,7 +29,6 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api/v1/auth" )
 @RequiredArgsConstructor
-@CrossOrigin(origins =  "http://localhost:5173")
 
 public class PostController {
     private final PostService service;
@@ -82,12 +81,9 @@ public class PostController {
     @DeleteMapping("/post/delete/{id}")
     public ResponseEntity <String> deltePost(@PathVariable ("id") Integer id){
             Likes like = likerepo.findLikesByPostId(id);
-            likerepo.delete(like);
             service.deletePost(id);
             return  ResponseEntity.ok("sucessfully  deleted");
     }
-
-
 
     @PutMapping("update/posts/{postId}")
     public ResponseEntity<PostDTO> updatepost(@RequestBody PostDTO postDTO, @PathVariable Integer postId){

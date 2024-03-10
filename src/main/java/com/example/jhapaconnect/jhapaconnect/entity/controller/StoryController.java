@@ -27,6 +27,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+
 public class StoryController {
     @Value("/images")
     private String path;

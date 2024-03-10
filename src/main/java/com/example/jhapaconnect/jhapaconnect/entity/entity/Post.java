@@ -43,8 +43,7 @@ public class Post {
 
     private String imageName;
 
-    @ManyToOne
-    private Likes like;
+
 
     private Date addedDate;
 
